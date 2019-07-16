@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class JSONserializer : MonoBehaviour
+public class JSONserializer
 {
 
     public string SaveFile(Planet planet)

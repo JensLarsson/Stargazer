@@ -492,6 +492,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef1ceeede6e85094fb65d24c302570b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPlanet:
+    name: 
+    texture: {fileID: 0}
+    textureInt: 0
+    boardPosition: {x: 0, y: 0}
 --- !u!114 &576187519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1000,6 +1005,9 @@ MonoBehaviour:
   planets: []
   tempPlanetObject: {fileID: 7008517344388891943, guid: 7c5bc59f4e224a54b98b27e817acd983,
     type: 3}
+  textures:
+  - {fileID: 2800000, guid: 2585c772044de1047ae6600475088db1, type: 3}
+  - {fileID: 2800000, guid: 2859529b808e8ff4a8440945a2c41a26, type: 3}
 --- !u!4 &1242353524
 Transform:
   m_ObjectHideFlags: 0
@@ -1332,7 +1340,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1899735873}
+      - m_Target: {fileID: 1242353523}
         m_MethodName: CreatePlanet
         m_Mode: 1
         m_Arguments:

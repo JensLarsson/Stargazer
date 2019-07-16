@@ -119,3 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b173edc146c4d684b9ccdcb32aaecd4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet:
+    name: 
+    texture: {fileID: 2800000, guid: 2859529b808e8ff4a8440945a2c41a26, type: 3}
+    boardPosition: {x: 0, y: 0}
