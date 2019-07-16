@@ -6,23 +6,30 @@ using System.IO;
 public class JSONserializer : MonoBehaviour
 {
 
-    public void SaveFile(Planet planet)
+    public string SaveFile(Planet planet)
     {
         var outputString = JsonUtility.ToJson(planet);
-        File.WriteAllText(Application.dataPath + "/SaveTests/" + planet.name + ".txt", outputString);
+        Directory.CreateDirectory(Application.persistentDataPath + "/Planets");
+        string location = Application.persistentDataPath + "/Planets/" + planet.name + ".txt";
+        File.WriteAllText(location, outputString);
+        return location;
     }
+
 
     public List<Planet> LoadAllPlanets()
     {
         List<Planet> planets = new List<Planet>();
-        foreach (string file in Directory.GetFiles(Application.dataPath + "/SaveTests/", "*.txt"))
+        foreach (string file in Directory.GetFiles(Application.persistentDataPath + "/Planets/", "*.txt"))
         {
-            Debug.Log(file);
             string s = File.ReadAllText(file);
-            Debug.Log(s);
             Planet saveFile = JsonUtility.FromJson<Planet>(s);
             planets.Add(saveFile);
         }
         return planets;
+    }
+
+    public void DeleteFolder(string s)
+    {
+        Directory.Delete(s, true);
     }
 }
