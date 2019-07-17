@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class TravelButton : MonoBehaviour
 {
-    Planet targetPlanet = null;
+    public Planet targetPlanet;
 
     private void Start()
     {
+        targetPlanet = null;
         EventManager.Subscribe("MouseDownPlanet", SetTargetPlanet);
     }
     private void OnDisable()
@@ -28,6 +29,11 @@ public class TravelButton : MonoBehaviour
             PlayerInfo.currentPlanet = targetPlanet;
             SceneManager.LoadScene("JensTestDiorama");
         }
+    }
+
+    public void TravelToSectorSystem()
+    {
+        SceneManager.LoadScene("JestTestScen");
     }
 
 }

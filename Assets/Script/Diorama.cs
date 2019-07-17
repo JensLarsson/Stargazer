@@ -8,10 +8,12 @@ public class Diorama : MonoBehaviour
     //Här finns information om hur planeten/sektorn som besöks ser ut, och vilka beslut som finns tillgängliga
 
     List<Location> locations = new List<Location>();
-
+    public MeshRenderer planet;
     void Start()
     {
-
+        float planetScale = PlayerInfo.currentPlanet.planetScale;
+        planet.transform.localScale = new Vector3(planetScale, planetScale, planetScale);
+        planet.material.SetTexture("_MainTex", PlayerInfo.currentPlanet.texture);
     }
 
 

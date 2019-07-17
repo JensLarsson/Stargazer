@@ -9,6 +9,7 @@ public class PlanetSystem : MonoBehaviour
     public SpriteRenderer tempPlanetObject;
     List<GameObject> planetObjects = new List<GameObject>();
 
+    public List<Texture2D> textures;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class PlanetSystem : MonoBehaviour
         planetObjects = new List<GameObject>();
         foreach (Planet planet in planets)
         {
+            planet.texture = textures[planet.textureInt];
             GameObject gObject = Instantiate(tempPlanetObject.gameObject);
             gObject.transform.position = planet.boardPosition;
             gObject.GetComponent<LocationIcon>().planet = planet;
@@ -53,14 +55,18 @@ public class PlanetSystem : MonoBehaviour
     {
         float vertical = Camera.main.orthographicSize;
         float horizontal = vertical * Screen.width / Screen.height;
+        int i = Random.Range(0, textures.Count);
         Planet planet = new Planet()
         {
             name = Random.Range(0, 9999).ToString(),
             boardPosition = new Vector2(
             Random.Range(HorizontalMargin - horizontal, horizontal - HorizontalMargin),
-            Random.Range(botMargin - vertical, vertical - topMargin))
+            Random.Range(botMargin - vertical, vertical - topMargin)),
+            textureInt = i,
+            planetScale = Random.Range(4.0f, 10.0f)
+            
         };
         JSONserializer json = new JSONserializer();
-        json.SaveFile(planet);
+        Debug.Log(json.SaveFile(planet));
     }
 }
