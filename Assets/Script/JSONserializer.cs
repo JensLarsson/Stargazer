@@ -14,6 +14,13 @@ public class JSONserializer
         File.WriteAllText(location, outputString);
         return location;
     }
+    public string SaveFile(List<Item> items)
+    {
+        var outputString = JsonUtility.ToJson(items);
+        string location = Application.persistentDataPath + "/Data/ItemList.txt";
+        File.WriteAllText(location, outputString);
+        return location;
+    }
 
 
     public List<Planet> LoadAllPlanets()
