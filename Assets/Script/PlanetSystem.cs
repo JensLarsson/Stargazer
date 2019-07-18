@@ -64,7 +64,6 @@ public class PlanetSystem : MonoBehaviour
             Random.Range(botMargin - vertical, vertical - topMargin)),
             textureInt = i,
             planetScale = Random.Range(4.0f, 10.0f)
-            
         };
         JSONserializer json = new JSONserializer();
         Debug.Log(json.SaveFile(planet));

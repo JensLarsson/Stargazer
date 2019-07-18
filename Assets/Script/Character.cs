@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Character
 {
+    public string name;
+    public string[] currentLocation = new string[2];
+    public Vector3 position;
+    public float planetOffset;
     private float playerApproval;
     public float PlayerApproval
     {
