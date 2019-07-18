@@ -10,4 +10,7 @@ public class Planet
     public int textureInt;
     public float planetScale;
     public Vector2 boardPosition;
+
+    public string majorityPopString;
+    public string minorityPopsString;
 }

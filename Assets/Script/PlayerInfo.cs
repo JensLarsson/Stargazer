@@ -9,6 +9,4 @@ public static class PlayerInfo
     public static Inventory inventory;
     public static int currency;
     //Håller info om spelarens nuvarande status, vilken planet de befinner sig på, vilka resurser de har, etc.
-
-
 }
