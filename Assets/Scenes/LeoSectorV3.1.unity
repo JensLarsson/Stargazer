@@ -1012,6 +1012,11 @@ MonoBehaviour:
   textures:
   - {fileID: 2800000, guid: 2585c772044de1047ae6600475088db1, type: 3}
   - {fileID: 2800000, guid: 2859529b808e8ff4a8440945a2c41a26, type: 3}
+  - {fileID: 2800000, guid: 7b414f293e356c44dac2987ec1155919, type: 3}
+  - {fileID: 2800000, guid: 757109b8bab883449a754905b123b239, type: 3}
+  - {fileID: 2800000, guid: ea130da0f44a09b4484ffdde905f4839, type: 3}
+  - {fileID: 2800000, guid: ad08ec6e2d965e34397b2f54e626edef, type: 3}
+  - {fileID: 2800000, guid: e1e73ca7c3f736645983be87cd08d693, type: 3}
 --- !u!4 &1242353524
 Transform:
   m_ObjectHideFlags: 0
@@ -1114,6 +1119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca1bdb7ee1194a4382cd2dfeeacb41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textThing: {fileID: 2053763357}
 --- !u!1 &1755640584
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public static class TempLibrary
 
     public static List<string> randomPlanetNames = new List<string>()
     {
-        "Earth", "Mars", "Jupiter", "Centauri", "Mustafar", "Courcant", "Shire", "Gandalf", "Sheapard", "Gao", "Qubec" // 11
+        "Earth", "Mars", "Jupiter", "Centauri", "Mustafar", "Courcant", "Shire", "Gandalf", "Sheapard", "Gao", "Qubec" //, "BoB", "42", "Turbo" // 11
     };
 
     public static List<string> randomResources = new List<string>()
