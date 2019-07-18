@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class TravelButton : MonoBehaviour
 {
     public Planet targetPlanet;
+    [SerializeField] string targetScene_PlanetScene;
+    [SerializeField] public string targetScene_SectorScene;
 
     private void Start()
     {
@@ -27,13 +29,13 @@ public class TravelButton : MonoBehaviour
         if (targetPlanet != null)
         {
             PlayerInfo.currentPlanet = targetPlanet;
-            SceneManager.LoadScene("JensTestDiorama");
+            SceneManager.LoadScene(targetScene_PlanetScene);
         }
     }
 
     public void TravelToSectorSystem()
     {
-        SceneManager.LoadScene("JestTestScen");
+        SceneManager.LoadScene(targetScene_SectorScene);
     }
 
 }
