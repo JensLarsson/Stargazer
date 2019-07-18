@@ -64,7 +64,6 @@ public class PlanetSystem : MonoBehaviour
             Random.Range(botMargin - vertical, vertical - topMargin)),
             textureInt = texI,
             planetScale = Random.Range(4.0f, 10.0f)
-            
         };
 
         planet.majorityPopString = TempLibrary.randomRaces[Random.Range(0, TempLibrary.randomRaces.Count)];

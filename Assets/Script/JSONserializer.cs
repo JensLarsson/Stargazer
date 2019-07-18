@@ -14,8 +14,39 @@ public class JSONserializer
         File.WriteAllText(location, outputString);
         return location;
     }
+    //public string SaveFile(List<Item> items)
+    //{
+    //    var outputString = JsonUtility.ToJson(items);
+    //    string location = Application.persistentDataPath + "/Data/ItemList.txt";
+    //    File.WriteAllText(location, outputString);
+    //    return location;
+    //}
 
+    public string SaveFile(Character character)
+    {
+        var outputString = JsonUtility.ToJson(character);
+        Directory.CreateDirectory(Application.persistentDataPath + "/Characters");
+        string location = Application.persistentDataPath + "/Characters/" + character.name + ".txt";
+        File.WriteAllText(location, outputString);
+        return location;
+    }
 
+    public Character LoadCharacter(string name)
+    {
+        string location = Application.persistentDataPath + "/Characters/" + name + ".txt";
+        Character character = JsonUtility.FromJson<Character>(location);
+        return character;
+    }
+    public List<Character> LoadCharacter(List<string> names)
+    {
+        List<Character> characters = new List<Character>();
+        foreach (string name in names)
+        {
+            string location = Application.persistentDataPath + "/Characters/" + name + ".txt";
+            characters.Add(JsonUtility.FromJson<Character>(location));
+        }
+        return characters;
+    }
     public List<Planet> LoadAllPlanets()
     {
         List<Planet> planets = new List<Planet>();

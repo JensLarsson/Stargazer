@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Item
+public class ItemDirectory : MonoBehaviour
 {
-    public string name;
+    List<Item> items = new List<Item>();
 }
