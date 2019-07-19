@@ -6,7 +6,7 @@ public class Diorama : MonoBehaviour
 {
     //Dioramat är klassen som representerar scenen där spelaren kan välja vilka platser/karaktären de vill ineragera med,
     //Här finns information om hur planeten/sektorn som besöks ser ut, och vilka beslut som finns tillgängliga
-
+    public List<Item> items;
     List<Location> locations = new List<Location>();
     public MeshRenderer planet;
     void Start()
@@ -14,7 +14,16 @@ public class Diorama : MonoBehaviour
         float planetScale = PlayerInfo.currentPlanet.planetScale;
         planet.transform.localScale = new Vector3(planetScale, planetScale, planetScale);
         planet.material.SetTexture("_MainTex", PlayerInfo.currentPlanet.texture);
+
+        itemLibrary itL = new itemLibrary();
+        itL.CreateLibraryFile();
+
+        JSONserializer json = new JSONserializer();
+               
+        items = json.LoadItemLibrary();
     }
 
 
 }
+
+

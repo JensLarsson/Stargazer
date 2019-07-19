@@ -20,5 +20,4 @@ public class TextController : MonoBehaviour
         colour.a -= Time.deltaTime;
         text.color = colour;
     }
-
 }

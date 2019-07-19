@@ -5,7 +5,8 @@ using System.IO;
 
 public class JSONserializer
 {
-
+    //Saves a file for an indivudual plannet
+    //
     public string SaveFile(Planet planet)
     {
         var outputString = JsonUtility.ToJson(planet);
@@ -14,13 +15,15 @@ public class JSONserializer
         File.WriteAllText(location, outputString);
         return location;
     }
-    //public string SaveFile(List<Item> items)
-    //{
-    //    var outputString = JsonUtility.ToJson(items);
-    //    string location = Application.persistentDataPath + "/Data/ItemList.txt";
-    //    File.WriteAllText(location, outputString);
-    //    return location;
-    //}
+
+    public List<Item> LoadItemLibrary()
+    {
+        string location = Application.persistentDataPath + "/Data/ItemList.txt";
+        string s = File.ReadAllText(location); //Loads all the text in the file
+        itemLibrary itemLib = JsonUtility.FromJson<itemLibrary>(s); //DeSerializes the string just loaded
+        List<Item> items = itemLib.items;
+        return items;
+    }
 
     public string SaveFile(Character character)
     {
@@ -34,7 +37,8 @@ public class JSONserializer
     public Character LoadCharacter(string name)
     {
         string location = Application.persistentDataPath + "/Characters/" + name + ".txt";
-        Character character = JsonUtility.FromJson<Character>(location);
+        string s = File.ReadAllText(location);
+        Character character = JsonUtility.FromJson<Character>(s);
         return character;
     }
     public List<Character> LoadCharacter(List<string> names)
@@ -58,6 +62,7 @@ public class JSONserializer
         }
         return planets;
     }
+
 
     public void DeleteFolder(string s)
     {

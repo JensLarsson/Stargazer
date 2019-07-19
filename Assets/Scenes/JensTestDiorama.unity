@@ -877,6 +877,9 @@ MonoBehaviour:
     textureInt: 0
     planetScale: 0
     boardPosition: {x: 0, y: 0}
+    locations: []
+    majorityPopString: 
+    minorityPopsString: 
   targetScene_PlanetScene: 
   targetScene_SectorScene: LeoSectorV3.1
 --- !u!1 &1907962987

@@ -494,9 +494,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPlanet:
     name: 
-    texture: {fileID: 0}
     textureInt: 0
+    planetScale: 0
     boardPosition: {x: 0, y: 0}
+    locations: []
+    majorityPopString: 
+    minorityPopsString: 
+  targetScene_PlanetScene: JensTestDiorama
+  targetScene_SectorScene: 
 --- !u!114 &576187519
 MonoBehaviour:
   m_ObjectHideFlags: 0
