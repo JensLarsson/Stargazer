@@ -20,6 +20,8 @@ public class Location
         }
     }
     public float planetOffset = 0;
+    public List<Character> characters = new List<Character>();
+
 
     public Location()
     {

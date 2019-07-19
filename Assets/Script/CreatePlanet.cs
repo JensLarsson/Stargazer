@@ -8,15 +8,35 @@ public class CreatePlanet
     {
         float vertical = Camera.main.orthographicSize;
         float horizontal = vertical * Screen.width / Screen.height;
-        int i = Random.Range(0, textures.Count);
+        int textureIndex = Random.Range(0, textures.Count);
         Planet planet = new Planet()
         {
-            name = Random.Range(0, 9999).ToString(),
+            name = TempLibrary.randomPlanetNames[Random.Range(0, TempLibrary.randomPlanetNames.Count)], //name = Random.Range(0, 9999).ToString(),
             boardPosition = potision,
-            textureInt = i,
+            textureInt = textureIndex,
             planetScale = Random.Range(4.0f, 10.0f)
         };
+
+        planet.majorityPopString = TempLibrary.randomRaces[Random.Range(0, TempLibrary.randomRaces.Count)];
+        int randomSize = Random.Range(1, 4);
+
+        //print(randomSize);
+        planet.minorityPopsString = "the " + TempLibrary.randomRaces[Random.Range(0, TempLibrary.randomPlanetNames.Count)];
+        for (int i = 1; i < randomSize; i++)
+        {
+            planet.minorityPopsString += ", the " + TempLibrary.randomRaces[Random.Range(0, TempLibrary.randomPlanetNames.Count)];
+        }
+        planet.minorityPopsString += " and the " + TempLibrary.randomRaces[Random.Range(0, TempLibrary.randomPlanetNames.Count)];
+
+        
+        int locationCount = Random.Range(2, 5);
+        for (int i = 0; i < locationCount; i++)
+        {
+            Location location = new Location();
+            planet.locations.Add(location);
+        }
+
         JSONserializer json = new JSONserializer();
-        Debug.Log(json.SaveFile(planet));
+        Debug.Log(json.SaveFile(planet)); //Saves planet as a file which returns a string
     }
 }

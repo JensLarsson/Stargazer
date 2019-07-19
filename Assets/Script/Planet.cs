@@ -10,11 +10,10 @@ public class Planet
     public int textureInt;
     public float planetScale;
     public Vector2 boardPosition;
-    public List<Location> locations;
+    public List<Location> locations = new List<Location>();
 
 
     public string majorityPopString;
     public string minorityPopsString;
-
-
+    
 }

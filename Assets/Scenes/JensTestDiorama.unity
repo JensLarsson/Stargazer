@@ -270,8 +270,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153438159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.51, y: -1.72, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalPosition: {x: 5.5, y: -1.5, z: 20}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -712,7 +712,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd471fca202e7e4ca54788f137dd112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: {fileID: 153438161}
+  items: []
+  planetMesh: {fileID: 153438161}
+  locationIcon: {fileID: 6613911321596616859, guid: ab71052f00ab2954bb0d5c06eb4c83ce,
+    type: 3}
 --- !u!4 &1695115836
 Transform:
   m_ObjectHideFlags: 0
@@ -881,7 +884,7 @@ MonoBehaviour:
     majorityPopString: 
     minorityPopsString: 
   targetScene_PlanetScene: 
-  targetScene_SectorScene: LeoSectorV3.1
+  targetScene_SectorScene: JestTestScen
 --- !u!1 &1907962987
 GameObject:
   m_ObjectHideFlags: 0

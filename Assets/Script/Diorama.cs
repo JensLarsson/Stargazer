@@ -8,20 +8,29 @@ public class Diorama : MonoBehaviour
     //Här finns information om hur planeten/sektorn som besöks ser ut, och vilka beslut som finns tillgängliga
     public List<Item> items;
     List<Location> locations = new List<Location>();
-    public MeshRenderer planet;
+    public MeshRenderer planetMesh;
+    public GameObject locationIcon;
     void Start()
     {
-        float planetScale = PlayerInfo.currentPlanet.planetScale;
-        planet.transform.localScale = new Vector3(planetScale, planetScale, planetScale);
-        planet.material.SetTexture("_MainTex", PlayerInfo.currentPlanet.texture);
-
+        locations = PlayerInfo.currentPlanet.locations;
+        float planetScale = PlayerInfo.currentPlanet.planetScale; //Size of the planet
+        planetMesh.transform.localScale = new Vector3(planetScale, planetScale, planetScale);
+        planetMesh.material.SetTexture("_MainTex", PlayerInfo.currentPlanet.texture); //chnages the texture of the planet
         itemLibrary itL = new itemLibrary();
-        itL.CreateLibraryFile();
-
+        itL.CreateLibraryFile();    //Temporary test, creates the JSON file of all the available items in the game
         JSONserializer json = new JSONserializer();
-               
-        items = json.LoadItemLibrary();
+        items = json.LoadItemLibrary(); //The list of all available items in the game, this should be moved somewhere where it won't be reloaded every time one visit a planet
+
+        foreach (Location location in locations)
+        {
+            GameObject gObject = Instantiate(locationIcon);
+            Vector3 planetPos = planetMesh.transform.position;
+            planetPos.z = 0;
+            gObject.transform.position = planetPos + location.Position * planetScale * 0.5f;
+
+        }
     }
+
 
 
 }
