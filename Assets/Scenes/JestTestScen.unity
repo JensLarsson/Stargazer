@@ -699,7 +699,6 @@ GameObject:
   - component: {fileID: 828397631}
   - component: {fileID: 828397630}
   - component: {fileID: 828397629}
-  - component: {fileID: 828397632}
   m_Layer: 5
   m_Name: ButtonDeletePlanets
   m_TagString: Untagged
@@ -770,8 +769,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 828397632}
-        m_MethodName: DeletePlanets
+      - m_Target: {fileID: 1242353523}
+        m_MethodName: DeleteAllPlanets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -820,19 +819,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828397627}
   m_CullTransparentMesh: 0
---- !u!114 &828397632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828397627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aee3ca268ca2a8b48a5f7d182d77e48f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 0}
 --- !u!1 &881787820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,7 +1260,6 @@ GameObject:
   - component: {fileID: 1899735872}
   - component: {fileID: 1899735871}
   - component: {fileID: 1899735870}
-  - component: {fileID: 1899735873}
   m_Layer: 5
   m_Name: ButtonCreatePlanets
   m_TagString: Untagged
@@ -1395,16 +1380,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899735868}
   m_CullTransparentMesh: 0
---- !u!114 &1899735873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899735868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aee3ca268ca2a8b48a5f7d182d77e48f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 624366067}

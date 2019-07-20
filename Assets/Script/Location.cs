@@ -6,30 +6,27 @@ using UnityEngine;
 public class Location
 {
     public string name;
-    Vector3 position;
+    public Vector3 position;
     //[Tooltip("This is a normalized position in 3D space, which needs to be multiplied with the scale of a sphere")]
-    public Vector3 Position
-    {
-        get
-        {
-            return position;
-        }
-        private set
-        {
-            position = value;
-        }
-    }
+
     public float planetOffset = 0;
     public List<Character> characters = new List<Character>();
 
 
-    public Location()
-    {
-        GenerateLocation();
-    }
 
-    public void GenerateLocation()
+
+    public void GenerateNewLocation()
     {
-        position = Random.onUnitSphere;
+        Debug.Log(position);
+        int characterCount = Random.Range(1, 3);
+
+        for (int i = 0; i < characterCount; i++)
+        {
+            Character character = new Character()
+            {
+                name = "Bob"
+            };
+            characters.Add(character);
+        }
     }
 }

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6916763972586470344}
   - component: {fileID: 7008517344388891943}
   - component: {fileID: 8034213337808209514}
-  - component: {fileID: -3314990755913728138}
+  - component: {fileID: 433436325028344434}
   m_Layer: 0
-  m_Name: Diamond
+  m_Name: PlanetLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-3314990755913728138
+--- !u!114 &433436325028344434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,5 +121,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planet:
     name: 
-    texture: {fileID: 2800000, guid: 2859529b808e8ff4a8440945a2c41a26, type: 3}
+    textureInt: 0
+    planetScale: 0
     boardPosition: {x: 0, y: 0}
+    locations: []
+    majorityPopString: 
+    minorityPopsString: 

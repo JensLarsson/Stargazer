@@ -28,12 +28,15 @@ public class CreatePlanet
         }
         planet.minorityPopsString += " and the " + TempLibrary.randomRaces[Random.Range(0, TempLibrary.randomPlanetNames.Count)];
 
-        
+
         int locationCount = Random.Range(2, 5);
         for (int i = 0; i < locationCount; i++)
         {
             Location location = new Location();
+            location.position = Random.onUnitSphere;
+            location.GenerateNewLocation();
             planet.locations.Add(location);
+
         }
 
         JSONserializer json = new JSONserializer();

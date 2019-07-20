@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6929990327402938532}
   - component: {fileID: 7201827180870237972}
-  - component: {fileID: 216276123392939737}
+  - component: {fileID: 6915041523747027882}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -80,34 +80,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &216276123392939737
-PolygonCollider2D:
+--- !u!65 &6915041523747027882
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964869481935202593}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.5}
-      - {x: -0.4330127, y: -0.25000003}
-      - {x: 0.43301272, y: -0.24999996}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.86, y: 0.75, z: 0.1}
+  m_Center: {x: 0, y: 0.12, z: 0}
 --- !u!1 &6613911321596616859
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +102,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2278629405407420999}
+  - component: {fileID: -601361615653229322}
+  - component: {fileID: 2501356766640048148}
   m_Layer: 0
   m_Name: Location
   m_TagString: Untagged
@@ -139,3 +126,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-601361615653229322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613911321596616859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e15928ede8164844a338f0f0fa205d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location:
+    name: 
+    position: {x: 0, y: 0, z: 0}
+    planetOffset: 0
+    characters: []
+  sr: {fileID: 7201827180870237972}
+--- !u!54 &2501356766640048148
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613911321596616859}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0

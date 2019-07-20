@@ -6,6 +6,7 @@ using System;
 public struct EventParameter
 {
     public Planet planetParam;
+    public Location locationParam;
 }
 
 public static class EventManager

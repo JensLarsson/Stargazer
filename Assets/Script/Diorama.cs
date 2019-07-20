@@ -25,8 +25,9 @@ public class Diorama : MonoBehaviour
         {
             GameObject gObject = Instantiate(locationIcon);
             Vector3 planetPos = planetMesh.transform.position;
-            planetPos.z = 0;
-            gObject.transform.position = planetPos + location.Position * planetScale * 0.5f;
+            gObject.transform.position = planetPos + location.position * planetScale * 0.5f;
+            gObject.transform.parent = planetMesh.transform;
+            gObject.GetComponent<LocationIcon>().location = location;
 
         }
     }

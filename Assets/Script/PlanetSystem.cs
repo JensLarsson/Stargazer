@@ -46,7 +46,7 @@ public class PlanetSystem : MonoBehaviour
             planet.texture = textures[planet.textureInt];
             GameObject gObject = Instantiate(tempPlanetObject.gameObject);
             gObject.transform.position = planet.boardPosition;
-            gObject.GetComponent<LocationIcon>().planet = planet;
+            gObject.GetComponent<PlanetLocationIcon>().planet = planet;
             planetObjects.Add(gObject);
         }
     }
@@ -60,5 +60,11 @@ public class PlanetSystem : MonoBehaviour
             Random.Range(botMargin - vertical, vertical - topMargin));
         CreatePlanet planetCreator = new CreatePlanet();
         planetCreator.CreateNew(textures, pos);
+    }
+
+    public void DeleteAllPlanets()
+    {
+        JSONserializer json = new JSONserializer();
+        json.DeleteFolder(Application.persistentDataPath + "/Planets");
     }
 }
