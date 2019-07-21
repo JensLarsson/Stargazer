@@ -28,6 +28,8 @@ public class Diorama : MonoBehaviour
             gObject.transform.position = planetPos + location.position * planetScale * 0.5f;
             gObject.transform.parent = planetMesh.transform;
             gObject.GetComponent<LocationIcon>().location = location;
+            
+            gObject.transform.rotation = Quaternion.LookRotation(-location.position);
 
         }
     }

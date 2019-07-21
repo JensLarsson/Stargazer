@@ -17,14 +17,14 @@ public class Location
 
     public void GenerateNewLocation()
     {
-        Debug.Log(position);
-        int characterCount = Random.Range(1, 3);
-
+        int characterCount = Random.Range(1, 6);
+        Names names = new Names();
         for (int i = 0; i < characterCount; i++)
         {
+            (string surname, string familyname) = names.maleName();
             Character character = new Character()
             {
-                name = "Bob"
+                name = surname + " " + familyname
             };
             characters.Add(character);
         }

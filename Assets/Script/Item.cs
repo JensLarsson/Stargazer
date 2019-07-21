@@ -6,5 +6,5 @@ using UnityEngine;
 public class Item
 {
     public string name;
-
+    public ItemMaterial.Mat material;
 }

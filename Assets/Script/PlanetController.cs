@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlanetController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float rotationSpeed = 20;
+    public Light sun;
+    private void OnMouseDrag()
     {
-        
+        float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Mathf.Deg2Rad;
+        float rotY = Input.GetAxis("Mouse Y") * rotationSpeed * Mathf.Deg2Rad;
+
+        transform.Rotate(Vector3.up, -rotX);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        transform.Rotate(Vector3.up, Time.deltaTime);
+        sun.transform.Rotate(Vector3.up, -Time.deltaTime);
     }
 }

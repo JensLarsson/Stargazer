@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 [System.Serializable]
 public class itemLibrary
@@ -12,7 +13,7 @@ public class itemLibrary
     {
         List<string> itemnames = new List<string>
         {
-            "Robotics", "Minerals", "Food", "Consumer Goods"
+            "Robotics", "Resources", "Ship Parts", "Consumer Goods"
         };
 
         itemLibrary itemLib = new itemLibrary();
@@ -28,9 +29,14 @@ public class itemLibrary
 }
 
 [System.Serializable]
-public class Material
+public class ItemMaterial
 {
-    enum Mat { Wood, Bronze, Steel, Gold, Diamond, Katchin }
-    Mat mat;
-    float value;
+    public enum Mat { Wooden, Bronze, Steel, Gold, Diamond, Katchin }
+    Mat material;
+    float[,] value;
+
+    ItemMaterial()
+    {
+        value = new float[Enum.GetNames(typeof(Mat)).Length, 3];
+    }
 }
