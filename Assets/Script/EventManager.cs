@@ -7,6 +7,7 @@ public struct EventParameter
 {
     public Planet planetParam;
     public Location locationParam;
+    public Character characterParam;
 }
 
 public static class EventManager

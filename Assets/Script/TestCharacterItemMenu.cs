@@ -1,33 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class TestCharacterMenu : MonoBehaviour
+public class TestCharacterItemMenu : MonoBehaviour
 {
 
     public Transform parentTransform;
     public GameObject textPrefab;
     void Start()
     {
-        EventManager.Subscribe("MouseDownLocation", ResetCharacterMenu);
+        EventManager.Subscribe("MouseClickCharacter", ResetCharacterItemMenu);
 
     }
     private void OnDisable()
     {
-        EventManager.UnSubscribe("MouseDownLocation", ResetCharacterMenu);
+        EventManager.UnSubscribe("MouseClickCharacter", ResetCharacterItemMenu);
     }
 
-    void ResetCharacterMenu(EventParameter eventParam)
+    void ResetCharacterItemMenu(EventParameter eventParam)
     {
         foreach (Transform child in parentTransform)
         {
             Destroy(child.gameObject);
         }
-        foreach (Character character in eventParam.locationParam.characters)
+        foreach (ItemSlot item in eventParam.characterParam.inventory.Items)
         {
             GameObject gObject = Instantiate(textPrefab, parentTransform);
-            gObject.GetComponent<ButtonCharacterMenu>().character = character;
+            gObject.GetComponent<ButtonNPCItemButton>().item = item;
         }
     }
 }

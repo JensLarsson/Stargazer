@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentTransform: {fileID: 1491699001}
-  textPrefab: {fileID: 5498641736130693557, guid: c95d1b06a0c5f2b429220d7fe5b9fe10,
+  textPrefab: {fileID: 9033137699549327235, guid: 3a84f8a739efec04688fda5df65a3acd,
     type: 3}
 --- !u!1 &468881333
 GameObject:
@@ -788,7 +788,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 24.9, y: 0}
+  m_AnchoredPosition: {x: 5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1491699002
@@ -833,8 +833,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 450, y: 50}
-  m_Spacing: {x: 25, y: 0}
+  m_CellSize: {x: 490, y: 50}
+  m_Spacing: {x: 25, y: 5}
   m_Constraint: 1
   m_ConstraintCount: 1
 --- !u!1 &1677303006
@@ -849,6 +849,7 @@ GameObject:
   - component: {fileID: 1677303010}
   - component: {fileID: 1677303009}
   - component: {fileID: 1677303008}
+  - component: {fileID: 1677303011}
   m_Layer: 5
   m_Name: NPCInventory
   m_TagString: Untagged
@@ -945,6 +946,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677303006}
   m_CullTransparentMesh: 0
+--- !u!114 &1677303011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677303006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f77826275f903d449976afa88339eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentTransform: {fileID: 1855390076}
+  textPrefab: {fileID: 9033137699549327235, guid: 2702c050c83043e4a91b08c7bf479797,
+    type: 3}
 --- !u!1 &1682007761
 GameObject:
   m_ObjectHideFlags: 0

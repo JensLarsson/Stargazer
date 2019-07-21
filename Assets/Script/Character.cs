@@ -9,6 +9,7 @@ public class Character
     public string[] currentLocation = new string[2];
     public Vector3 position;
     public float planetOffset;
+    public Inventory inventory = new Inventory();
     private float playerApproval;
     public float PlayerApproval
     {
@@ -21,5 +22,4 @@ public class Character
             playerApproval = Mathf.Clamp(value, 0.0f, 100.0f);
         }
     }
-    Inventory inventory = new Inventory();
 }
