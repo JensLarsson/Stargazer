@@ -19,8 +19,7 @@ public class Diorama : MonoBehaviour
         itemLibrary itL = new itemLibrary();
         itL.CreateLibraryFile();    //Temporary test, creates the JSON file of all the available items in the game
         JSONserializer json = new JSONserializer();
-        items = json.LoadItemLibrary(); //The list of all available items in the game, this should be moved somewhere where it won't be reloaded every time one visit a planet
-
+        
         foreach (Location location in locations)
         {
             GameObject gObject = Instantiate(locationIcon);

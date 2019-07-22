@@ -15,5 +15,5 @@ public class Planet
 
     public string majorityPopString;
     public string minorityPopsString;
-    
+
 }

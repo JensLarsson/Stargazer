@@ -26,6 +26,7 @@ public class Location
             {
                 name = surname + " " + familyname
             };
+            character.inventory.GenerateNewInventory(10);
             characters.Add(character);
         }
     }

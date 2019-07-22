@@ -21,7 +21,7 @@ public class TestButtonAddItem : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (ItemSlot slot in PlayerInfo.inventory.Items)
+        foreach (ItemSlot slot in PlayerInfo.inventory.items)
         {
             GameObject gObject = Instantiate(textPrefab.gameObject);
             gObject.transform.SetParent(targetParent);

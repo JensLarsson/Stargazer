@@ -7,18 +7,26 @@ public class ItemSlot
 {
     public Item _item;
     public int _amount = 0;
+    public int _value = 10;
 }
 
 [System.Serializable]
 public class Inventory
 {
-    List<ItemSlot> items = new List<ItemSlot>();
+    public List<ItemSlot> items = new List<ItemSlot>();
 
-    public List<ItemSlot> Items
+
+    public void GenerateNewInventory(int amount)
     {
-        get
+        itemLibrary itL = new itemLibrary();
+        JSONserializer json = new JSONserializer();
+        List<Item> itemLib = json.LoadItemLibrary(); //The list of all available items in the game, this should be moved somewhere where it won't be reloaded repeatedly
+
+        int libraryLength = itemLib.Count;
+        for (int i = 0; i < amount; i++)
         {
-            return items;
+            int index = Random.Range(0, libraryLength);
+            AddItem(itemLib[index]);
         }
     }
 
