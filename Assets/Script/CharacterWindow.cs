@@ -214,9 +214,13 @@ public class CharacterWindow : MonoBehaviour
         }
         if (PlayerInfo.Pay(price))
         {
-            PlayerInfo.inventory.AddItem(askList._items);
-            _character.inventory.AddItem(offerList._items);
-            CharacterSelected(_character);
+            inventoryPlayer.AddItem(askList._items);
+            inventoryNPC.AddItem(offerList._items);
+            askList = new Inventory();
+            offerList = new Inventory();
+            ResetOfferWindow();
+            ResetNPCInventoryWindow();
+            ResetPlayerInventoryWindow();
         }
     }
 
