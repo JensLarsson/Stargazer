@@ -23,7 +23,7 @@ public class TestCharacterItemMenu : MonoBehaviour
         EventManager.UnSubscribe("MouseDownLocation", ClearItemMenu);
         EventManager.UnSubscribe("MouseClickNPCItem", ItemSelected);
     }
-    
+
     void ResetCharacterItemMenu(EventParameter eventParam)
     {
         character = eventParam.characterParam;
@@ -33,8 +33,11 @@ public class TestCharacterItemMenu : MonoBehaviour
         }
         foreach (ItemSlot item in eventParam.characterParam.inventory._items) //Skapar nya object för varje objekt typ
         {
-            GameObject gObject = Instantiate(textPrefab, parentTransform);
-            gObject.GetComponent<ButtonNPCItemButton>().item = item;
+            if (item._amount > 0)
+            {
+                GameObject gObject = Instantiate(textPrefab, parentTransform);
+                gObject.GetComponent<ButtonNPCItemButton>().item = item;
+            }
         }
         itemSlot = null;
     }

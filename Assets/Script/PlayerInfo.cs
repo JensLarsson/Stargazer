@@ -14,7 +14,6 @@ public static class PlayerInfo
     {
         get { return currency; }
     }
-
     public static bool Pay(int cost)
     {
         if (currency - cost < 0)

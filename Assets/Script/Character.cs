@@ -22,4 +22,5 @@ public class Character
             playerApproval = Mathf.Clamp(value, 0.0f, 100.0f);
         }
     }
+    
 }

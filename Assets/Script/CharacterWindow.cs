@@ -22,25 +22,35 @@ public class CharacterWindow : MonoBehaviour
     private ItemSlot selectedNegotiationItemSlot;
     private ItemSlot selectedPlayerItemSlot;
 
+    private Character _character;
     //List for temporarily holding copies of inventories
-    private List<ItemSlot> inventoryNPC = new List<ItemSlot>();
-    private List<ItemSlot> inventoryPlayer = new List<ItemSlot>();
+    private Inventory inventoryNPC = new Inventory();
+    private Inventory inventoryPlayer = new Inventory();
     //2 lists for trade window for the sake of dividing asks and offers 
-    private List<ItemSlot> askList = new List<ItemSlot>();
-    private List<ItemSlot> offerList = new List<ItemSlot>();
+    private Inventory askList = new Inventory();
+    private Inventory offerList = new Inventory();
 
     void Start()
     {
         EventManager.Subscribe("MouseClickNPCItem", ItemSelectedNPC);
+        EventManager.Subscribe("SoldOutItem", ItemSoldOut);
+        EventManager.Subscribe("SoldOutItemPlayer", ItemSoldOutPlayer);
+        EventManager.Subscribe("SoldOutItemNegotiation", ItemSoldOutNegotiation);
         EventManager.Subscribe("MouseClickNegotiationItem", ItemSelectedNegotiation);
         EventManager.Subscribe("MouseClickPlayerItem", ItemSelectedPlayer);
     }
     public void CharacterSelected(Character character)//resets all the 
     {
-        inventoryNPC = character.inventory._items;
-        inventoryPlayer = PlayerInfo.inventory._items;
-        askList = new List<ItemSlot>();
-        offerList = new List<ItemSlot>();
+        if (_character != null)
+        {
+            PlayerInfo.inventory.AddItem(offerList._items);
+            _character.inventory.AddItem(askList._items);
+        }
+        _character = character;
+        inventoryNPC = character.inventory;
+        inventoryPlayer = PlayerInfo.inventory;
+        askList = new Inventory();
+        offerList = new Inventory();
 
         ResetOfferWindow();
         ResetNPCInventoryWindow();
@@ -49,8 +59,14 @@ public class CharacterWindow : MonoBehaviour
     private void OnDisable()
     {
         EventManager.UnSubscribe("MouseClickNPCItem", ItemSelectedNPC);
+        EventManager.UnSubscribe("SoldOutItem", ItemSoldOut);
+        EventManager.UnSubscribe("SoldOutItemPlayer", ItemSoldOutPlayer);
+        EventManager.UnSubscribe("SoldOutItemNegotiation", ItemSoldOutNegotiation);
         EventManager.UnSubscribe("MouseClickNegotiationItem", ItemSelectedNegotiation);
         EventManager.UnSubscribe("MouseClickPlayerItem", ItemSelectedPlayer);
+
+        PlayerInfo.inventory.AddItem(offerList._items);
+        _character.inventory.AddItem(askList._items);
     }
 
     void ItemSelectedNPC(EventParameter eventParam)
@@ -68,25 +84,56 @@ public class CharacterWindow : MonoBehaviour
 
     public void addAsk()
     {
-        ItemSlot slot = GetItemSlot(selectedNPCItemSlot._item, askList);
+        ItemSlot slot = GetItemSlot(selectedNPCItemSlot._item, offerList._items);
+        EventParameter eventParam = new EventParameter()
+        {
+            itemParam = slot._item
+        };
+        if (slot._amount > 0)
+        {
+            offerList.AddItem(slot._item, -1);
+            inventoryPlayer.AddItem(slot._item, 1);
+            EventManager.TriggerEvent("ItemPurchased", eventParam);
+            ResetPlayerInventoryWindow();
+            return;
+        }
+        slot = GetItemSlot(selectedNPCItemSlot._item, askList._items);
         if (slot._amount == 0)
         {
-            askList.Add(slot);
+            askList._items.Add(slot);
         }
         slot._amount += 1;
+        inventoryNPC.AddItem(slot._item, -1);
         ResetOfferWindow();
-
+        EventManager.TriggerEvent("ItemPurchased", eventParam);
     }
 
     public void addOffer()
     {
-        ItemSlot slot = GetItemSlot(selectedPlayerItemSlot._item, offerList);
+        ItemSlot slot = GetItemSlot(selectedPlayerItemSlot._item, askList._items);
+        EventParameter eventParam = new EventParameter()
+        {
+            itemParam = slot._item
+        };
+
+        if (slot._amount > 0)
+        {
+            askList.AddItem(slot._item, -1);
+            inventoryNPC.AddItem(slot._item, 1);
+            EventManager.TriggerEvent("ItemPurchased", eventParam);
+            ResetNPCInventoryWindow();
+            return;
+        }
+
+        slot = GetItemSlot(selectedPlayerItemSlot._item, offerList._items);
         if (slot._amount == 0)
         {
-            offerList.Add(slot);
+            offerList._items.Add(slot);
         }
         slot._amount += 1;
         ResetOfferWindow();
+        PlayerInfo.inventory.AddItem(slot._item, -1);
+        EventManager.TriggerEvent("ItemPurchased", eventParam);
     }
 
     ItemSlot GetItemSlot(Item item, List<ItemSlot> itemList)
@@ -108,15 +155,14 @@ public class CharacterWindow : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        foreach (ItemSlot item in askList) //Skapar nya object för varje objekt typ
+        foreach (ItemSlot item in askList._items) //Skapar nya object för varje objekt typ
         {
             GameObject gObject = Instantiate(ItemTextPrefab, tradeNegotiationGrid);
             gObject.GetComponent<ButtonNegotiationItem>().enabled = true;
             gObject.GetComponent<ButtonNegotiationItem>().item = item;
             gObject.GetComponent<ButtonNegotiationItem>().SetColour();
-
         }
-        foreach (ItemSlot item in offerList) //Skapar nya object för varje objekt typ
+        foreach (ItemSlot item in offerList._items) //Skapar nya object för varje objekt typ
         {
             GameObject gObject = Instantiate(ItemTextPrefab, tradeNegotiationGrid);
             gObject.GetComponent<ButtonNegotiationItem>().enabled = true;
@@ -131,7 +177,7 @@ public class CharacterWindow : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        foreach (ItemSlot item in inventoryNPC) //Skapar nya object för varje objekt typ
+        foreach (ItemSlot item in inventoryNPC._items) //Skapar nya object för varje objekt typ
         {
             GameObject gObject = Instantiate(ItemTextPrefab, tradeNPCGrid);
             gObject.GetComponent<ButtonNPCItemButton>().enabled = true;
@@ -146,7 +192,7 @@ public class CharacterWindow : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        foreach (ItemSlot item in inventoryPlayer) //Skapar nya object för varje objekt typ
+        foreach (ItemSlot item in inventoryPlayer._items) //Skapar nya object för varje objekt typ
         {
             GameObject gObject = Instantiate(ItemTextPrefab, tradePlayerGrid);
             gObject.GetComponent<ButtonPlayerItem>().enabled = true;
@@ -158,14 +204,63 @@ public class CharacterWindow : MonoBehaviour
     public void OfferTrade()
     {
         int price = 0;
-        foreach (ItemSlot item in askList)
+        foreach (ItemSlot item in askList._items)
         {
             price -= item._value;
         }
-        foreach (ItemSlot item in offerList)
+        foreach (ItemSlot item in offerList._items)
         {
             price -= item._value;
         }
+        if (PlayerInfo.Pay(price))
+        {
+            PlayerInfo.inventory.AddItem(askList._items);
+            _character.inventory.AddItem(offerList._items);
+            CharacterSelected(_character);
+        }
+    }
 
+    public void RemoveNegotiatedItem()
+    {
+        EventParameter eventParam = new EventParameter()
+        {
+            itemParam = selectedNegotiationItemSlot._item
+        };
+        foreach (ItemSlot slot in askList._items)
+        {
+            if (slot._item.name == selectedNegotiationItemSlot._item.name)
+            {
+                askList.AddItem(slot._item, -1);
+                inventoryNPC.AddItem(slot._item, 1);
+                EventManager.TriggerEvent("ItemPurchased", eventParam);
+                ResetNPCInventoryWindow();
+                return;
+            }
+        }
+        foreach (ItemSlot slot in offerList._items)
+        {
+            if (slot._item.name == selectedNegotiationItemSlot._item.name)
+            {
+                offerList.AddItem(slot._item, -1);
+                inventoryPlayer.AddItem(slot._item, 1);
+                EventManager.TriggerEvent("ItemPurchased", eventParam);
+                ResetPlayerInventoryWindow();
+                return;
+            }
+        }
+    }
+
+    void ItemSoldOut(EventParameter eventParam)
+    {
+        ResetNPCInventoryWindow();
+    }
+
+    void ItemSoldOutPlayer(EventParameter eventParam)
+    {
+        ResetPlayerInventoryWindow();
+    }
+    void ItemSoldOutNegotiation(EventParameter eventParam)
+    {
+        ResetOfferWindow();
     }
 }

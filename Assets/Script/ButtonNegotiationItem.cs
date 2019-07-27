@@ -20,13 +20,13 @@ public class ButtonNegotiationItem : MonoBehaviour,
     {
         image = GetComponent<Image>();
         text.text = item._item.name + " x" + item._amount.ToString();
-        EventManager.Subscribe("MouseClickNegotiationItem", MouseClick);
-        //EventManager.Subscribe("ItemPurchased", RefreshText);
+        EventManager.Subscribe("MouseClickItem", MouseClick);
+        EventManager.Subscribe("ItemPurchased", RefreshText);
     }
     private void OnDisable()
     {
-        EventManager.UnSubscribe("MouseClickNegotiationItem", MouseClick);
-        //EventManager.UnSubscribe("ItemPurchased", RefreshText);
+        EventManager.UnSubscribe("MouseClickItem", MouseClick);
+        EventManager.UnSubscribe("ItemPurchased", RefreshText);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -68,7 +68,10 @@ public class ButtonNegotiationItem : MonoBehaviour,
     void RefreshText(EventParameter eventParam)
     {
         text.text = item._item.name + " x" + item._amount.ToString();
-
+        if (item._amount <= 0)
+        {
+            EventManager.TriggerEvent("SoldOutItemNegotiation", eventParam);
+        }
     }
     public void SetColour()
     {

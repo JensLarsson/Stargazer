@@ -53,6 +53,21 @@ public class Inventory
                 _items.Add(slot);////Fix shit here
             }
         }
+
+    }
+    public void RemoveItems(List<ItemSlot> items)
+    {
+        foreach (ItemSlot slot in items)
+        {
+            foreach (ItemSlot _slot in _items)
+            {
+                if (slot._item.name == _slot._item.name)
+                {
+                    _slot._amount -= slot._amount;
+                    break;
+                }
+            }
+        }
     }
     public void AddItem(Item item)
     {

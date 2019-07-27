@@ -66,5 +66,9 @@ public class ButtonPlayerItem : MonoBehaviour,
     void RefreshText(EventParameter eventParam)
     {
         text.text = item._item.name + " x" + item._amount.ToString();
+        if (item._amount <= 0)
+        {
+            EventManager.TriggerEvent("SoldOutItemPlayer", eventParam);
+        }
     }
 }
