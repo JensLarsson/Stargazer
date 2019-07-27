@@ -10,8 +10,8 @@ public class JSONserializer
     public string SaveFile(Planet planet)
     {
         var outputString = JsonUtility.ToJson(planet);
-        Directory.CreateDirectory(Application.persistentDataPath + "/Planets");
-        string location = Application.persistentDataPath + "/Planets/" + planet.name + ".txt";
+        Directory.CreateDirectory(Application.persistentDataPath + "/Planets/Generated");
+        string location = Application.persistentDataPath + "/Planets/Generated/" + planet.name + ".txt";
         File.WriteAllText(location, outputString);
         return location;
     }
@@ -54,12 +54,30 @@ public class JSONserializer
     public List<Planet> LoadAllPlanets()
     {
         List<Planet> planets = new List<Planet>();
-        foreach (string file in Directory.GetFiles(Application.persistentDataPath + "/Planets/", "*.txt"))
+        string filePath = Application.persistentDataPath + "/Planets/";
+        try
         {
-            string s = File.ReadAllText(file);
-            Planet saveFile = JsonUtility.FromJson<Planet>(s);
-            planets.Add(saveFile);
+            foreach (string file in Directory.GetFiles(filePath, "*.txt"))
+            {
+                string s = File.ReadAllText(file);
+                Planet saveFile = JsonUtility.FromJson<Planet>(s);
+                planets.Add(saveFile);
+            }
         }
+        catch { Debug.Log("Filepath " + filePath + " Not Found"); }
+
+        filePath += "Generated/";
+        try
+        {
+            foreach (string file in Directory.GetFiles(filePath, "*.txt"))
+            {
+                string s = File.ReadAllText(file);
+                Planet saveFile = JsonUtility.FromJson<Planet>(s);
+                planets.Add(saveFile);
+            }
+        }
+        catch { Debug.Log("Filepath " + filePath + " Not Found"); }
+
         return planets;
     }
 

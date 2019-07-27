@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ButtonNPCItemButton : MonoBehaviour,
+public class ButtonNegotiationItem : MonoBehaviour,
     IPointerClickHandler,
     IPointerEnterHandler,
     IPointerExitHandler
 {
+    public Color askColour;
+
     public Text text;
     [System.NonSerialized] public ItemSlot item;
     Image image;
@@ -18,19 +20,19 @@ public class ButtonNPCItemButton : MonoBehaviour,
     {
         image = GetComponent<Image>();
         text.text = item._item.name + " x" + item._amount.ToString();
-        EventManager.Subscribe("MouseClickNPCItem", MouseClick);
-        EventManager.Subscribe("ItemPurchased", RefreshText);
+        EventManager.Subscribe("MouseClickNegotiationItem", MouseClick);
+        //EventManager.Subscribe("ItemPurchased", RefreshText);
     }
     private void OnDisable()
     {
-        EventManager.UnSubscribe("MouseClickNPCItem", MouseClick);
-        EventManager.UnSubscribe("ItemPurchased", RefreshText);
+        EventManager.UnSubscribe("MouseClickNegotiationItem", MouseClick);
+        //EventManager.UnSubscribe("ItemPurchased", RefreshText);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         EventParameter eventParam = new EventParameter() { itemSlotParam = item };
-        EventManager.TriggerEvent("MouseClickNPCItem", eventParam);
+        EventManager.TriggerEvent("MouseClickNegotiationItem", eventParam);
         selected = true;
         Color colour = image.color;
         colour.a = 100;
@@ -67,9 +69,9 @@ public class ButtonNPCItemButton : MonoBehaviour,
     {
         text.text = item._item.name + " x" + item._amount.ToString();
 
-        if (item._amount <= 0)
-        {
-            EventManager.TriggerEvent("SoldOutItem", eventParam);
-        }
+    }
+    public void SetColour()
+    {
+        text.color = askColour;
     }
 }

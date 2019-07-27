@@ -12,7 +12,7 @@ public static class PlayerInfo
     private static int currency = 5000;
     public static int Currency
     {
-        get;
+        get { return currency; }
     }
 
     public static bool Pay(int cost)
@@ -25,6 +25,10 @@ public static class PlayerInfo
         return true;
     }
 
+    static PlayerInfo()
+    {
+        inventory.GenerateNewInventory(3);
+    }
 
     //public static void SavePlayer()
     //{

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ButtonNPCItemButton : MonoBehaviour,
+public class ButtonPlayerItem : MonoBehaviour,
     IPointerClickHandler,
     IPointerEnterHandler,
     IPointerExitHandler
@@ -18,19 +18,19 @@ public class ButtonNPCItemButton : MonoBehaviour,
     {
         image = GetComponent<Image>();
         text.text = item._item.name + " x" + item._amount.ToString();
-        EventManager.Subscribe("MouseClickNPCItem", MouseClick);
+        EventManager.Subscribe("MouseClickPlayerItem", MouseClick);
         EventManager.Subscribe("ItemPurchased", RefreshText);
     }
     private void OnDisable()
     {
-        EventManager.UnSubscribe("MouseClickNPCItem", MouseClick);
+        EventManager.UnSubscribe("MouseClickPlayerItem", MouseClick);
         EventManager.UnSubscribe("ItemPurchased", RefreshText);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         EventParameter eventParam = new EventParameter() { itemSlotParam = item };
-        EventManager.TriggerEvent("MouseClickNPCItem", eventParam);
+        EventManager.TriggerEvent("MouseClickPlayerItem", eventParam);
         selected = true;
         Color colour = image.color;
         colour.a = 100;
@@ -66,10 +66,5 @@ public class ButtonNPCItemButton : MonoBehaviour,
     void RefreshText(EventParameter eventParam)
     {
         text.text = item._item.name + " x" + item._amount.ToString();
-
-        if (item._amount <= 0)
-        {
-            EventManager.TriggerEvent("SoldOutItem", eventParam);
-        }
     }
 }

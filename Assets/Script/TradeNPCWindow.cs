@@ -2,28 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestCharacterItemMenu : MonoBehaviour
+public class TradeNPCWindow : MonoBehaviour
 {
 
     public Transform parentTransform;
     public GameObject textPrefab;
     Character character;
     ItemSlot itemSlot;
+    List<ItemSlot> items;
+
     void Start()
     {
-        //EventManager.Subscribe("MouseClickCharacter", ResetCharacterItemMenu);
-        EventManager.Subscribe("SoldOutItem", ResetCharacterItemMenu);
-        EventManager.Subscribe("MouseDownLocation", ClearItemMenu);
         EventManager.Subscribe("MouseClickNPCItem", ItemSelected);
     }
     private void OnDisable()
     {
-        //EventManager.UnSubscribe("MouseClickCharacter", ResetCharacterItemMenu);
-        EventManager.UnSubscribe("SoldOutItem", ResetCharacterItemMenu);
-        EventManager.UnSubscribe("MouseDownLocation", ClearItemMenu);
         EventManager.UnSubscribe("MouseClickNPCItem", ItemSelected);
     }
-    
+
     void ResetCharacterItemMenu(EventParameter eventParam)
     {
         character = eventParam.characterParam;
@@ -44,7 +40,7 @@ public class TestCharacterItemMenu : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        foreach (ItemSlot item in character.inventory._items) //Skapar nya object för varje objekt typ
+        foreach (ItemSlot item in items) //Skapar nya object för varje objekt typ
         {
             GameObject gObject = Instantiate(textPrefab, parentTransform);
             gObject.GetComponent<ButtonNPCItemButton>().item = item;
@@ -52,7 +48,7 @@ public class TestCharacterItemMenu : MonoBehaviour
         itemSlot = null;
     }
     //Nollställer listan, genom att ta bort alla objekt
-    void ClearItemMenu(EventParameter eventParam)
+    void ClearItemMenu()
     {
         foreach (Transform child in parentTransform)
         {
@@ -69,13 +65,12 @@ public class TestCharacterItemMenu : MonoBehaviour
 
     public void PurchaseSelectedItem()
     {
-        if (PlayerInfo.Pay(itemSlot._value))
-        {
             PlayerInfo.inventory.AddItem(itemSlot._item);
             character.inventory.AddItem(itemSlot._item, -1);
             Debug.Log(PlayerInfo.inventory._items.Count);
             EventParameter eventParam = new EventParameter() { itemParam = itemSlot._item };
             EventManager.TriggerEvent("ItemPurchased", eventParam);
-        }
+        
     }
 }
+

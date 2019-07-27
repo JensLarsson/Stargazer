@@ -65,6 +65,6 @@ public class PlanetSystem : MonoBehaviour
     public void DeleteAllPlanets()
     {
         JSONserializer json = new JSONserializer();
-        json.DeleteFolder(Application.persistentDataPath + "/Planets");
+        json.DeleteFolder(Application.persistentDataPath + "/Planets/Generated");
     }
 }
