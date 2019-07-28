@@ -319,6 +319,7 @@ GameObject:
   - component: {fileID: 210349734}
   - component: {fileID: 210349733}
   - component: {fileID: 210349736}
+  - component: {fileID: 210349737}
   m_Layer: 5
   m_Name: CharacterList
   m_TagString: Untagged
@@ -338,9 +339,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1491699001}
-  - {fileID: 1484818339}
   m_Father: {fileID: 1907962991}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210349731}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1367256648, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Inertia: 1
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 20
-  m_Viewport: {fileID: 1491699001}
+  m_Viewport: {fileID: 210349732}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
   m_HorizontalScrollbarVisibility: 0
@@ -432,6 +432,19 @@ MonoBehaviour:
   textPrefab: {fileID: 9033137699549327235, guid: 3a84f8a739efec04688fda5df65a3acd,
     type: 3}
   CharacterWindow: {fileID: 1484818342}
+--- !u!114 &210349737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210349731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &354918079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,13 +1596,13 @@ RectTransform:
   - {fileID: 1293269671}
   - {fileID: 1676208509}
   - {fileID: 354918080}
-  m_Father: {fileID: 210349732}
-  m_RootOrder: 1
+  m_Father: {fileID: 1907962991}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 840.125, y: -360}
-  m_SizeDelta: {x: 860.25, y: 530}
+  m_AnchoredPosition: {x: 75.125, y: 0}
+  m_SizeDelta: {x: -659.75, y: -200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1484818340
 MonoBehaviour:
@@ -1742,7 +1755,6 @@ GameObject:
   - component: {fileID: 1582596640}
   - component: {fileID: 1582596643}
   - component: {fileID: 1582596642}
-  - component: {fileID: 1582596641}
   - component: {fileID: 1582596644}
   m_Layer: 5
   m_Name: Text
@@ -1770,38 +1782,6 @@ RectTransform:
   m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: 780, y: 888}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1582596641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582596639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1367256648, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Content: {fileID: 1582596640}
-  m_Horizontal: 0
-  m_Vertical: 1
-  m_MovementType: 2
-  m_Elasticity: 0.1
-  m_Inertia: 0
-  m_DecelerationRate: 10
-  m_ScrollSensitivity: 20
-  m_Viewport: {fileID: 1676208509}
-  m_HorizontalScrollbar: {fileID: 0}
-  m_VerticalScrollbar: {fileID: 0}
-  m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 0
-  m_HorizontalScrollbarSpacing: 0
-  m_VerticalScrollbarSpacing: 0
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1582596642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1839,7 +1819,7 @@ MonoBehaviour:
     Aenean blandit purus id urna accumsan vulputate. Cras lacus ligula, aliquam quis
     lobortis et, vestibulum eu sem. Sed in suscipit erat, eu ullamcorper ante. Nam
     dui diam, pellentesque ut interdum non, sollicitudin interdum ex. Fusce vel dignissim
-    urna, vel rutrum nisl. Pellentesque tempus mi eu lacus suscipit auctor.\r\n\r\nDuis
+    urna, vel rutrum nisl. Pellentesque tempus mi eu lacus suscipit auctor.\r\n\r<color=green>green</color>\nDuis
     id ante vitae felis accumsan lacinia. Maecenas mi nulla, efficitur non eleifend
     quis, dictum et lacus. In iaculis sapien arcu, ac tristique massa aliquam sit
     amet. Phasellus in ipsum vitae mauris semper rhoncus. Quisque eget lacus et velit
@@ -1967,6 +1947,7 @@ GameObject:
   - component: {fileID: 1676208511}
   - component: {fileID: 1676208510}
   - component: {fileID: 1676208512}
+  - component: {fileID: 1676208513}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2044,6 +2025,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &1676208513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676208508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1367256648, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Content: {fileID: 1582596640}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 2
+  m_Elasticity: 0.1
+  m_Inertia: 0
+  m_DecelerationRate: 10
+  m_ScrollSensitivity: 20
+  m_Viewport: {fileID: 1676208509}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 0}
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1677303006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,6 +2311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   planetMesh: {fileID: 153438161}
+  planetLight: {fileID: 2033426262}
   locationIcon: {fileID: 6613911321596616859, guid: ab71052f00ab2954bb0d5c06eb4c83ce,
     type: 3}
 --- !u!4 &1695115836
@@ -2347,7 +2361,7 @@ RectTransform:
   m_Children:
   - {fileID: 16505763}
   m_Father: {fileID: 1907962991}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -2643,6 +2657,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1484818339}
   - {fileID: 210349732}
   - {fileID: 1732503833}
   m_Father: {fileID: 0}

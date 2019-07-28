@@ -17,7 +17,7 @@ public class ButtonNPCItemButton : MonoBehaviour,
     private void Start()
     {
         image = GetComponent<Image>();
-        text.text = item._item.name + " x" + item._amount.ToString();
+        text.text = item._item.material.ToString() + " " + item._item.name + " x" + item._amount.ToString();
         EventManager.Subscribe("MouseClickNPCItem", MouseClick);
         EventManager.Subscribe("ItemPurchased", RefreshText);
     }
@@ -65,7 +65,7 @@ public class ButtonNPCItemButton : MonoBehaviour,
 
     void RefreshText(EventParameter eventParam)
     {
-        text.text = item._item.name + " x" + item._amount.ToString();
+        text.text = item._item.material.ToString() + " " + item._item.name + " x" + item._amount.ToString();
 
         if (item._amount <= 0)
         {

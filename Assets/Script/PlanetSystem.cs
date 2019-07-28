@@ -49,6 +49,8 @@ public class PlanetSystem : MonoBehaviour
             gObject.GetComponent<PlanetLocationIcon>().planet = planet;
             planetObjects.Add(gObject);
         }
+
+        
     }
 
     public void CreatePlanet()

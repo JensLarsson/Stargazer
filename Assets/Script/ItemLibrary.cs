@@ -25,6 +25,7 @@ public class itemLibrary
         string outputString = JsonUtility.ToJson(itemLib);
         string location = Application.persistentDataPath + "/Data/ItemList.txt";
         File.WriteAllText(location, outputString);
+
     }
 }
 
@@ -35,8 +36,13 @@ public class ItemMaterial
     Mat material;
     float[,] value;
 
-    ItemMaterial()
+    public ItemMaterial()
     {
         value = new float[Enum.GetNames(typeof(Mat)).Length, 3];
+    }
+
+    public Mat RandomMaterial()
+    {
+        return (Mat)UnityEngine.Random.Range(0, Enum.GetNames(typeof(Mat)).Length);
     }
 }

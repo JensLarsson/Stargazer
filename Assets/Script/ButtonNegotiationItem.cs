@@ -19,7 +19,7 @@ public class ButtonNegotiationItem : MonoBehaviour,
     private void Start()
     {
         image = GetComponent<Image>();
-        text.text = item._item.name + " x" + item._amount.ToString();
+        text.text = item._item.material.ToString() + " " + item._item.name + " x" + item._amount.ToString();
         EventManager.Subscribe("MouseClickItem", MouseClick);
         EventManager.Subscribe("ItemPurchased", RefreshText);
     }
@@ -67,7 +67,7 @@ public class ButtonNegotiationItem : MonoBehaviour,
 
     void RefreshText(EventParameter eventParam)
     {
-        text.text = item._item.name + " x" + item._amount.ToString();
+        text.text = item._item.material.ToString() + " " + item._item.name + " x" + item._amount.ToString();
         if (item._amount <= 0)
         {
             EventManager.TriggerEvent("SoldOutItemNegotiation", eventParam);

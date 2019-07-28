@@ -9,6 +9,7 @@ public class Diorama : MonoBehaviour
     public List<Item> items;
     List<Location> locations = new List<Location>();
     public MeshRenderer planetMesh;
+    public Transform planetLight;
     public GameObject locationIcon;
     void Start()
     {
@@ -19,7 +20,7 @@ public class Diorama : MonoBehaviour
         itemLibrary itL = new itemLibrary();
         itL.CreateLibraryFile();    //Temporary test, creates the JSON file of all the available items in the game
         JSONserializer json = new JSONserializer();
-        
+
         foreach (Location location in locations)
         {
             GameObject gObject = Instantiate(locationIcon);
@@ -27,10 +28,13 @@ public class Diorama : MonoBehaviour
             gObject.transform.position = planetPos + location.position * planetScale * 0.5f;
             gObject.transform.parent = planetMesh.transform;
             gObject.GetComponent<LocationIcon>().location = location;
-            
+
             gObject.transform.rotation = Quaternion.LookRotation(-location.position);
 
         }
+        float f = Random.Range(0.0f, 360.0f);
+        planetMesh.transform.Rotate(Vector3.up, f);
+        planetLight.transform.Rotate(Vector3.up, -f);
     }
 
 

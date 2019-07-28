@@ -36,24 +36,33 @@ public class Inventory
     }
     public void AddItem(List<ItemSlot> items)
     {
-        foreach (ItemSlot slot in items)
+        foreach (ItemSlot item in items)
         {
-            bool found = false;
-            foreach (ItemSlot _slot in _items)
+            ItemSlot slot = GetItemSlot(item._item);
+            if (slot._amount == 0)
             {
-                if (slot._item.name == _slot._item.name)
-                {
-                    found = true;
-                    _slot._amount += slot._amount;
-                    break;
-                }
+                _items.Add(slot);
             }
-            if (!found)
+            slot._amount += item._amount;
+            if (slot._amount <= 0)
             {
-                _items.Add(slot);////Fix shit here
+                RemoveItem(slot._item);
             }
+            //bool found = false;
+            //foreach (ItemSlot _slot in _items)
+            //{
+            //    if (item._item.name == _slot._item.name && item._item.material == _slot._item.material)
+            //    {
+            //        found = true;
+            //        _slot._amount += item._amount;
+            //        break;
+            //    }
+            //}
+            //if (!found)
+            //{
+            //    _items.Add(item);////Fix shit here
+            //}
         }
-
     }
     public void RemoveItems(List<ItemSlot> items)
     {
@@ -77,6 +86,7 @@ public class Inventory
             _items.Add(slot);
         }
         slot._amount += 1;
+
     }
     public void AddItem(Item item, int amount)
     {
@@ -96,11 +106,12 @@ public class Inventory
     {
         foreach (ItemSlot iS in _items)
         {
-            if (iS._item.name == item.name)
+            if (iS._item.name == item.name && iS._item.material == item.material)
             {
                 return iS;
             }
         }
+        ItemMaterial itemMaterial = new ItemMaterial();
         ItemSlot emptySlot = new ItemSlot() { _item = item, _amount = 0 };
         return emptySlot;
     }
@@ -109,7 +120,7 @@ public class Inventory
     {
         for (int i = 0; i < _items.Count; i++)
         {
-            if (_items[i]._item.name == item.name)
+            if (_items[i]._item.name == item.name && item.material == _items[i]._item.material)
             {
                 _items.RemoveAt(i);
             }

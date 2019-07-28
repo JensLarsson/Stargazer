@@ -55,6 +55,7 @@ public class CharacterWindow : MonoBehaviour
         ResetOfferWindow();
         ResetNPCInventoryWindow();
         ResetPlayerInventoryWindow();
+
     }
     private void OnDisable()
     {
@@ -140,7 +141,7 @@ public class CharacterWindow : MonoBehaviour
     {
         foreach (ItemSlot buySlot in itemList)
         {
-            if (buySlot._item.name == item.name)
+            if (buySlot._item.name == item.name && buySlot._item.material == item.material)
             {
                 return buySlot;
             }

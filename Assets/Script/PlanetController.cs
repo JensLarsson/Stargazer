@@ -14,6 +14,7 @@ public class PlanetController : MonoBehaviour
         transform.Rotate(Vector3.up, -rotX);
     }
 
+    
     private void Update()
     {
         transform.Rotate(Vector3.up, Time.deltaTime);
