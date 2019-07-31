@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 public class CharacterWindow : MonoBehaviour
 {
     [SerializeField] Image image;
-    [SerializeField] Text text;
+    [SerializeField] TextMeshProUGUI text;
 
     [SerializeField] GameObject ItemTextPrefab;
     // Parent transforms of trade window grids
@@ -55,7 +56,8 @@ public class CharacterWindow : MonoBehaviour
         ResetOfferWindow();
         ResetNPCInventoryWindow();
         ResetPlayerInventoryWindow();
-
+        Phrases phrases = new Phrases();
+        text.text = phrases.GetRandomGreeting();
     }
     private void OnDisable()
     {
