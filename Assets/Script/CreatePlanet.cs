@@ -28,18 +28,18 @@ public class CreatePlanet
         }
         planet.minorityPopsString += " and the " + TempLibrary.randomRaces[Random.Range(0, TempLibrary.randomPlanetNames.Count)];
 
-
+        JSONserializer json = new JSONserializer();
         int locationCount = Random.Range(2, 5);
         for (int i = 0; i < locationCount; i++)
         {
             Location location = new Location();
             location.position = Random.onUnitSphere;
             location.GenerateNewLocation();
-            planet.locations.Add(location);
-
+            location.planetName = planet.name;
+            planet.locations.Add(location.name.ToString());
+            json.SaveLocation(location);
         }
 
-        JSONserializer json = new JSONserializer();
         Debug.Log(json.SaveFile(planet)); //Saves planet as a file which returns a string
     }
 }

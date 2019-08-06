@@ -13,13 +13,13 @@ public class Diorama : MonoBehaviour
     public GameObject locationIcon;
     void Start()
     {
-        locations = PlayerInfo.currentPlanet.locations;
+        JSONserializer json = new JSONserializer();
+        locations = json.LoadLocations(PlayerInfo.currentPlanet.locations, PlayerInfo.currentPlanet.name);
         float planetScale = PlayerInfo.currentPlanet.planetScale; //Size of the planet
         planetMesh.transform.localScale = new Vector3(planetScale, planetScale, planetScale);
         planetMesh.material.SetTexture("_MainTex", PlayerInfo.currentPlanet.texture); //chnages the texture of the planet
         itemLibrary itL = new itemLibrary();
         itL.CreateLibraryFile();    //Temporary test, creates the JSON file of all the available items in the game
-        JSONserializer json = new JSONserializer();
 
         foreach (Location location in locations)
         {

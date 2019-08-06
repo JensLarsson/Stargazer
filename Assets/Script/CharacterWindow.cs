@@ -57,7 +57,7 @@ public class CharacterWindow : MonoBehaviour
         ResetNPCInventoryWindow();
         ResetPlayerInventoryWindow();
         Phrases phrases = new Phrases();
-        text.text = phrases.GetRandomGreeting();
+        text.text = character.quests[0].characterQuestIntroduction; //TEST This should be changed
     }
     private void OnDisable()
     {
@@ -269,5 +269,10 @@ public class CharacterWindow : MonoBehaviour
     void ItemSoldOutNegotiation(EventParameter eventParam)
     {
         ResetOfferWindow();
+    }
+
+    public void AddDialogue(string txt)
+    {
+        text.text += "\n \n" + txt;
     }
 }

@@ -9,6 +9,7 @@ public static class PlayerInfo
     //Inventory är en lista av ItemSlots, vilket innehåller en Item, och antalet av items.
     //Inventory har även logik för att hantera dessa objekt
     public static Inventory inventory = new Inventory();
+    public static List<Quest> quests = new List<Quest>();
     private static int currency = 5000;
     public static int Currency
     {

@@ -34,6 +34,46 @@ public class JSONserializer
         return location;
     }
 
+    public string SaveLocation(Location loc)
+    {
+        var outputString = JsonUtility.ToJson(loc);
+        Directory.CreateDirectory(Application.persistentDataPath + "/Locations");
+        string location = Application.persistentDataPath + "/Locations/" + loc.planetName + "_" + loc.name + ".txt";
+        File.WriteAllText(location, outputString);
+        return location;
+    }
+    public List<Location> LoadLocations(List<string> locationNames, string planetName)
+    {
+        List<Location> locations = new List<Location>();
+        string filePath = Application.persistentDataPath + "/Locations/";
+        try
+        {
+            foreach (string location in locationNames)
+            {
+                string fileName = filePath + planetName + "_" + location+".txt";
+                Debug.Log(fileName);
+                string s = File.ReadAllText(fileName);
+                Location saveFile = JsonUtility.FromJson<Location>(s);
+                locations.Add(saveFile);
+            }
+        }
+        catch { Debug.Log("Filepath " + filePath + " Not Found"); }
+
+        //filePath += "Generated/";
+        //try
+        //{
+        //    foreach (string file in Directory.GetFiles(filePath, "*.txt"))
+        //    {
+        //        string s = File.ReadAllText(file);
+        //        Location saveFile = JsonUtility.FromJson<Location>(s);
+        //        locations.Add(saveFile);
+        //    }
+        //}
+        //catch { Debug.Log("Filepath " + filePath + " Not Found"); }
+
+        return locations;
+    }
+
     public Character LoadCharacter(string name)
     {
         string location = Application.persistentDataPath + "/Characters/" + name + ".txt";
@@ -80,7 +120,6 @@ public class JSONserializer
 
         return planets;
     }
-
 
     public void DeleteFolder(string s)
     {

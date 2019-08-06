@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class ItemSlot
-{
-    public Item _item;
-    public int _amount = 0;
-    public int _value = 10;
-}
 
 [System.Serializable]
 public class Inventory
@@ -125,5 +118,18 @@ public class Inventory
                 _items.RemoveAt(i);
             }
         }
+    }
+
+    public bool HasItems(List<ItemSlot> items)
+    {
+        foreach (ItemSlot iSlot in items)
+        {
+            ItemSlot inventorySlot = GetItemSlot(iSlot._item); // Returns the slot in this.inventory
+            if (inventorySlot._amount < iSlot._amount) //Compares the amount of items in the slot returned in previous row
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

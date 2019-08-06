@@ -10,6 +10,7 @@ public class Character
     public Vector3 position;
     public float planetOffset;
     public Inventory inventory = new Inventory();
+    public List<Quest> quests = new List<Quest>();
     private float playerApproval;
     public float PlayerApproval
     {
@@ -22,5 +23,5 @@ public class Character
             playerApproval = Mathf.Clamp(value, 0.0f, 100.0f);
         }
     }
-    
+
 }
