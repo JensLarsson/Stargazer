@@ -1727,6 +1727,7 @@ GameObject:
   - component: {fileID: 1307322806}
   - component: {fileID: 1307322805}
   - component: {fileID: 1307322804}
+  - component: {fileID: 1307322807}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1791,21 +1792,21 @@ MonoBehaviour:
     Aenean blandit purus id urna accumsan vulputate. Cras lacus ligula, aliquam quis
     lobortis et, vestibulum eu sem. Sed in suscipit erat, eu ullamcorper ante. Nam
     dui diam, pellentesque ut interdum non, sollicitudin interdum ex. Fusce vel dignissim
-    urna, vel rutrum nisl. Pellentesque tempus mi eu lacus suscipit auctor.\r\n\r<color=green>green</color>\nDuis
-    id ante vitae felis accumsan lacinia. Maecenas mi nulla, efficitur non eleifend
-    quis, dictum et lacus. In iaculis sapien arcu, ac tristique massa aliquam sit
-    amet. Phasellus in ipsum vitae mauris semper rhoncus. Quisque eget lacus et velit
-    fermentum fermentum. Ut erat quam, vehicula in odio quis, commodo tincidunt dui.
-    Nunc mauris ante, lacinia eget pellentesque non, blandit at nulla. Cras iaculis
-    scelerisque ex vitae eleifend. Proin tincidunt dolor justo, imperdiet vestibulum
-    erat imperdiet ut.\r\n\r\nUt lacinia efficitur euismod. Aliquam neque purus, pharetra
-    eget porta at, ultricies sed mauris. Duis interdum, enim et efficitur egestas,
-    quam metus porta elit, a interdum augue orci ut libero. Praesent a velit vestibulum,
-    efficitur tortor ut, rhoncus tortor. Aenean semper erat vel ultrices pretium.
-    Vivamus iaculis justo at eros pellentesque placerat. Proin eu tortor sagittis,
-    porttitor purus vel, cursus ligula. Proin vel maximus tortor. Vivamus magna arcu,
-    placerat convallis risus eu, scelerisque egestas augue. Etiam mollis ullamcorper
-    libero sed sodales.\r\n"
+    urna, vel rutrum nisl. Pellentesque tempus mi eu lacus suscipit auctor.\r\n\r<link=testLink>This
+    is a link</link>\nDuis id ante vitae felis accumsan lacinia. Maecenas mi nulla,
+    efficitur non eleifend quis, dictum et lacus. In iaculis sapien arcu, ac tristique
+    massa aliquam sit amet. Phasellus in ipsum vitae mauris semper rhoncus. Quisque
+    eget lacus et velit fermentum fermentum. Ut erat quam, vehicula in odio quis,
+    commodo tincidunt dui. Nunc mauris ante, lacinia eget pellentesque non, blandit
+    at nulla. Cras iaculis scelerisque ex vitae eleifend. Proin tincidunt dolor justo,
+    imperdiet vestibulum erat imperdiet ut.\r\n\r\nUt lacinia efficitur euismod. Aliquam
+    neque purus, pharetra eget porta at, ultricies sed mauris. Duis interdum, enim
+    et efficitur egestas, quam metus porta elit, a interdum augue orci ut libero.
+    Praesent a velit vestibulum, efficitur tortor ut, rhoncus tortor. Aenean semper
+    erat vel ultrices pretium. Vivamus iaculis justo at eros pellentesque placerat.
+    Proin eu tortor sagittis, porttitor purus vel, cursus ligula. Proin vel maximus
+    tortor. Vivamus magna arcu, placerat convallis risus eu, scelerisque egestas augue.
+    Etiam mollis ullamcorper libero sed sodales.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1815,14 +1816,14 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4280229663
-  m_fontColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
+  m_fontColor: {r: 0.12156863, g: 0.12156863, b: 0.12156863, a: 1}
   m_enableVertexGradient: 0
-  m_colorMode: 3
+  m_colorMode: 2
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 1, g: 0, b: 0, a: 1}
+    topRight: {r: 1, g: 0, b: 0, a: 1}
+    bottomLeft: {r: 0.20064259, g: 0, b: 1, a: 1}
+    bottomRight: {r: 0.20064259, g: 0, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -1874,11 +1875,11 @@ MonoBehaviour:
   m_margin: {x: 5, y: 15, z: 5, w: 15}
   m_textInfo:
     textComponent: {fileID: 1307322805}
-    characterCount: 1482
+    characterCount: 1491
     spriteCount: 0
-    spaceCount: 217
-    wordCount: 216
-    linkCount: 0
+    spaceCount: 220
+    wordCount: 219
+    linkCount: 1
     lineCount: 25
     pageCount: 1
     materialCount: 1
@@ -1905,6 +1906,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307322802}
   m_CullTransparentMesh: 0
+--- !u!114 &1307322807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307322802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf1af3bf5df6f54984a80ea45f95d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkColour:
+    serializedVersion: 2
+    rgba: 4280942847
+  linkHighlight:
+    serializedVersion: 2
+    rgba: 4285749247
 --- !u!1 &1484818338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2174,6 +2193,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1484818342}
         m_MethodName: AddDialogue
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1307322807}
+        m_MethodName: ColourLinks
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

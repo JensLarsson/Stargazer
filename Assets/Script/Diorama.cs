@@ -13,6 +13,7 @@ public class Diorama : MonoBehaviour
     public GameObject locationIcon;
     void Start()
     {
+        TextCommandManager.ExecuteCommand("/Quest Test 242 dsaf.-asdf");
         JSONserializer json = new JSONserializer();
         locations = json.LoadLocations(PlayerInfo.currentPlanet.locations, PlayerInfo.currentPlanet.name);
         float planetScale = PlayerInfo.currentPlanet.planetScale; //Size of the planet
