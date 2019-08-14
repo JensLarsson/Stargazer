@@ -9,7 +9,7 @@ public class CharacterDialogueBase
 
     public void getQuest()
     {
-        PlayerInfo.quests.Add(quest);
+        //PlayerInfo.quests.Add(quest);
     }
 }
 

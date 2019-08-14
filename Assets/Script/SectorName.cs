@@ -10,7 +10,6 @@ public class SectorName : MonoBehaviour
     void Start()
     {
         textThing.text = TempLibrary.randomSectorNames[Random.Range(0, TempLibrary.randomSectorNames.Count)];
-
     }
 
     void Update()

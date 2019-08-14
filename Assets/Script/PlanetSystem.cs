@@ -14,7 +14,6 @@ public class PlanetSystem : MonoBehaviour
     private void Start()
     {
         setupSystem();
-
         EventManager.Subscribe("MouseDownPlanet", mouseOverPlanet);
     }
     private void OnDisable()
@@ -68,5 +67,6 @@ public class PlanetSystem : MonoBehaviour
     {
         JSONserializer json = new JSONserializer();
         json.DeleteFolder(Application.persistentDataPath + "/Planets/Generated");
+        json.DeleteFolder(Application.persistentDataPath + "/Locations");
     }
 }

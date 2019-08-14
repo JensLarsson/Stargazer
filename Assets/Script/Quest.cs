@@ -6,6 +6,7 @@ using UnityEngine;
 public class Quest
 {
     public string questName = "Temp Name";
+    public long questID;
     public string characterQuestIntroduction;
     public string questDescription;
     public List<QuestGoal> questGoals = new List<QuestGoal>();
@@ -44,6 +45,7 @@ public abstract class QuestGoal
     }
 }
 
+[System.Serializable]
 public class questItemReq : QuestGoal
 {
     public List<ItemSlot> items = new List<ItemSlot>();
@@ -67,6 +69,7 @@ public class questItemReq : QuestGoal
     }
 }
 
+[System.Serializable]
 public class questCreditReq : QuestGoal
 {
     public int currencyCost;
@@ -80,45 +83,3 @@ public class questCreditReq : QuestGoal
     }
 }
 
-//public class Quest
-//{
-//    public QuestID id; // should be replaced with hashcodes?
-//    List<QuestProgressCheck> questsChapter = new List<QuestProgressCheck>();
-//    public List<ItemSlot> requiredItem;
-
-//    public bool ProgressCompleted(string id)
-//    {
-//        foreach (QuestProgressCheck check in questsChapter)
-//        {
-//            if (id == check.id._string)
-//            {
-//                return check.finished;
-//            }
-//        }
-//        return false;
-//    }
-
-//    public bool ProgressCompleted(int id)
-//    {
-//        foreach (QuestProgressCheck check in questsChapter)
-//        {
-//            if (id == check.id._int)
-//            {
-//                return check.finished;
-//            }
-//        }
-//        return false;
-//    }
-//}
-
-//public class QuestProgressCheck
-//{
-//    public QuestID id;
-//    public bool finished;
-//}
-
-//public struct QuestID
-//{
-//    public string _string;
-//    public int _int;
-//}

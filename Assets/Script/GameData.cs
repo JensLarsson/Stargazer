@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestCreator
+[System.Serializable]
+public class GameData
 {
+    public int questID;
 }

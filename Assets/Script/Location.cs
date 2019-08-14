@@ -18,7 +18,6 @@ public class Location
         name = Random.Range(0, 999999).ToString(); //This should be replaced with a name generator
         int characterCount = Random.Range(1, 6);
         Names names = new Names();
-        QuestCreator questMaker = new QuestCreator();
         for (int i = 0; i < characterCount; i++)
         {
             (string surname, string familyname) = names.maleName();
@@ -27,7 +26,7 @@ public class Location
                 name = surname + " " + familyname
             };
             character.inventory.GenerateNewInventory(10);
-            character.quests.Add(questMaker.GenerateRandomQuest());
+            character.quests.Add(QuestManager.GenerateRandomQuest());
             characters.Add(character);
         }
     }

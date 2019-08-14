@@ -34,6 +34,15 @@ public class JSONserializer
         return location;
     }
 
+    public string SaveFile(Quest quest)
+    {
+        var outputString = JsonUtility.ToJson(quest);
+        Directory.CreateDirectory(Application.persistentDataPath + "/Quests");
+        string location = Application.persistentDataPath + "/Quests/" + quest.questName + ".txt";
+        File.WriteAllText(location, outputString);
+        return location;
+    }
+
     public string SaveLocation(Location loc)
     {
         var outputString = JsonUtility.ToJson(loc);
@@ -50,7 +59,7 @@ public class JSONserializer
         {
             foreach (string location in locationNames)
             {
-                string fileName = filePath + planetName + "_" + location+".txt";
+                string fileName = filePath + planetName + "_" + location + ".txt";
                 Debug.Log(fileName);
                 string s = File.ReadAllText(fileName);
                 Location saveFile = JsonUtility.FromJson<Location>(s);
@@ -72,6 +81,23 @@ public class JSONserializer
         //catch { Debug.Log("Filepath " + filePath + " Not Found"); }
 
         return locations;
+    }
+
+    public List<Quest> loadQuests()
+    {
+        List<Quest> quests = new List<Quest>();
+        string filePath = Application.persistentDataPath + "/Quest/";
+        try
+        {
+            foreach (string file in Directory.GetFiles(filePath, "*.txt"))
+            {
+                string s = File.ReadAllText(file);
+                Quest saveFile = JsonUtility.FromJson<Quest>(s);
+                quests.Add(saveFile);
+            }
+        }
+        catch { Debug.Log("Filepath " + filePath + " Not Found"); }
+        return quests;
     }
 
     public Character LoadCharacter(string name)
@@ -120,6 +146,7 @@ public class JSONserializer
 
         return planets;
     }
+
 
     public void DeleteFolder(string s)
     {
