@@ -6,18 +6,18 @@ using System.IO;
 public static class QuestManager
 {
     public static List<Quest> quests;
-    private static int nextQuestID
-    {
-        get
-        {
-            SavelatestQuestID();
-            return nextQuestID;
-        }
-        set
-        {
-            nextQuestID = value;
-        }
-    }
+    private static int nextQuestID = -1;
+    //{
+    //    get
+    //    {
+    //        SavelatestQuestID();
+    //        return nextQuestID;
+    //    }
+    //    set
+    //    {
+    //        nextQuestID = value;
+    //    }
+    //}
 
     private static void LoadQuests(int id)
     {
