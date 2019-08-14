@@ -18,10 +18,24 @@ public class JSONserializer
 
     public List<Item> LoadItemLibrary()
     {
-        string location = Application.persistentDataPath + "/Data/ItemList.txt";
-        string s = File.ReadAllText(location); //Loads all the text in the file
-        itemLibrary itemLib = JsonUtility.FromJson<itemLibrary>(s); //DeSerializes the string just loaded
-        List<Item> items = itemLib.items;
+        List<Item> items;
+        try
+        {
+            string location = Application.persistentDataPath + "/Data/ItemList.txt";
+            string s = File.ReadAllText(location); //Loads all the text in the file
+            itemLibrary itemLib = JsonUtility.FromJson<itemLibrary>(s); //DeSerializes the string just loaded
+            items = itemLib.items;
+        }
+        catch
+        {
+            itemLibrary itemLib = new itemLibrary();
+            itemLib.CreateLibraryFile();
+
+            string location = Application.persistentDataPath + "/Data/ItemList.txt";
+            string s = File.ReadAllText(location); //Loads all the text in the file
+            itemLib = JsonUtility.FromJson<itemLibrary>(s); //DeSerializes the string just loaded
+            items = itemLib.items;
+        }
         return items;
     }
 

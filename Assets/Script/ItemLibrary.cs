@@ -11,6 +11,7 @@ public class itemLibrary
 
     public void CreateLibraryFile()
     {
+        Directory.CreateDirectory(Application.persistentDataPath + "/Data");
         List<string> itemnames = new List<string>
         {
             "Robotics", "Resources", "Ship Parts", "Consumer Goods"
