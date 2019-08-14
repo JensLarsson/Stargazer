@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class PlanetSystem : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class PlanetSystem : MonoBehaviour
 
     private void Start()
     {
+
+        Directory.CreateDirectory(Application.persistentDataPath + "/Planets");
+        Directory.CreateDirectory(Application.persistentDataPath + "/Data");
+        Directory.CreateDirectory(Application.persistentDataPath + "/Locations");
         setupSystem();
 
         EventManager.Subscribe("MouseDownPlanet", mouseOverPlanet);
@@ -50,7 +55,7 @@ public class PlanetSystem : MonoBehaviour
             planetObjects.Add(gObject);
         }
 
-        
+
     }
 
     public void CreatePlanet()
