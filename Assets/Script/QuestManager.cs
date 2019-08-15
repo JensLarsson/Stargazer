@@ -2,22 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 
 public static class QuestManager
 {
     public static List<Quest> quests;
     private static int nextQuestID = -1;
-    //{
-    //    get
-    //    {
-    //        SavelatestQuestID();
-    //        return nextQuestID;
-    //    }
-    //    set
-    //    {
-    //        nextQuestID = value;
-    //    }
-    //}
+    private static int NextQuestID
+    {
+        get
+        {
+            SavelatestQuestID();
+            return nextQuestID;
+        }
+        set
+        {
+            nextQuestID = value;
+        }
+    }
+
+    public static Quest GetQuest(int ID)
+    {
+        return quests.FirstOrDefault(z => z.questID == ID);
+    }
 
     private static void LoadQuests(int id)
     {
@@ -50,7 +57,7 @@ public static class QuestManager
         quest.questDescription = QuestDescription(itemReqs, quest);
         quest.characterQuestIntroduction = quest.questDescription; //This should be changed 
         quest.questID = nextQuestID;
-        nextQuestID -= 1;   //Iterate to make sure that the same quest ID isn't reused
+        NextQuestID -= 1;   //Iterate to make sure that the same quest ID isn't reused
 
         JSONserializer json = new JSONserializer();
         json.SaveFile(quest);

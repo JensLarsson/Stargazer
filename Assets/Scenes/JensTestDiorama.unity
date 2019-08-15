@@ -643,9 +643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba64b92fb570eaf4fb33c00205ef90f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetParentTransform: {fileID: 1682007762}
-  textPrefab: {fileID: 9033137699549327235, guid: 2a71d2fa5f530254b9c2afd20eadf2d5,
-    type: 3}
 --- !u!114 &468881339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1320,7 +1317,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 5, y: 0}
-  m_SizeDelta: {x: 390, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1052755204
 MonoBehaviour:
@@ -1752,7 +1749,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: 0}
-  m_SizeDelta: {x: 780, y: 719.16}
+  m_SizeDelta: {x: 780, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1307322804
 MonoBehaviour:
@@ -1942,7 +1939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1484818339
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2575,9 +2572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f77826275f903d449976afa88339eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTransform: {fileID: 1855390076}
-  textPrefab: {fileID: 9033137699549327235, guid: 2702c050c83043e4a91b08c7bf479797,
-    type: 3}
 --- !u!114 &1677303012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2627,7 +2621,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 5, y: 0}
-  m_SizeDelta: {x: 390, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1682007763
 MonoBehaviour:
@@ -2914,7 +2908,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 5, y: 0}
-  m_SizeDelta: {x: 390, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1855390077
 MonoBehaviour:

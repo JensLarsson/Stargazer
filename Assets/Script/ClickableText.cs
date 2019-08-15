@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class ClickableText : MonoBehaviour, IPointerClickHandler
 {
     TextMeshProUGUI text;
-    public Color32 linkColour, linkHighlight;
+    public Color32 linkColour = Color.cyan, linkHighlight = Color.magenta;
 
     bool linkMouseOver = true, ShitsFuckedThisFixesABug = false;
 
@@ -49,7 +49,7 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left) 
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
             //If a text link is clicked
             int linkIndex = TMP_TextUtilities.FindIntersectingLink(text, Input.mousePosition, null);
