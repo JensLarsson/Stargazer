@@ -52,7 +52,7 @@ public class JSONserializer
     {
         var outputString = JsonUtility.ToJson(quest);
         Directory.CreateDirectory(Application.persistentDataPath + "/Quests");
-        string location = Application.persistentDataPath + "/Quests/" + quest.questName + ".txt";
+        string location = Application.persistentDataPath + "/Quests/" + quest.questID + ".txt";
         File.WriteAllText(location, outputString);
         return location;
     }
@@ -100,7 +100,7 @@ public class JSONserializer
     public List<Quest> loadQuests()
     {
         List<Quest> quests = new List<Quest>();
-        string filePath = Application.persistentDataPath + "/Quest/";
+        string filePath = Application.persistentDataPath + "/Quests/";
         try
         {
             foreach (string file in Directory.GetFiles(filePath, "*.txt"))

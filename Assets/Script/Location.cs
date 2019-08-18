@@ -26,7 +26,7 @@ public class Location
                 name = surname + " " + familyname
             };
             character.inventory.GenerateNewInventory(10);
-            character.quests.Add(QuestManager.GenerateRandomQuest());
+            character.quests.Add(QuestManager.GenerateRandomQuest().questID);
             characters.Add(character);
         }
     }

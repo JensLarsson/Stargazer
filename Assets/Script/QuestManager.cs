@@ -26,13 +26,37 @@ public static class QuestManager
         return quests.FirstOrDefault(z => z.questID == ID);
     }
 
-    private static void LoadQuests(int id)
+    public static bool QuestExist(int ID)
+    {
+        Quest quest = new Quest()
+        {
+            questID = ID
+        };
+        return quests.Contains(quest);
+    }
+
+    public static void RefreshQuestList()
+    {
+        JSONserializer json = new JSONserializer();
+        quests = json.loadQuests();
+    }
+
+    public static void LoadQuest(int id)
     {
         if (quests == null)
         {
             JSONserializer json = new JSONserializer();
             quests = json.loadQuests();
         }
+        string location = Application.persistentDataPath + "/Data/GameData.txt";
+        string s = File.ReadAllText(location);
+        GameData data = JsonUtility.FromJson<GameData>(s);
+        nextQuestID = data.questID;
+        //foreach (Quest quest in quests)
+        //{
+        //    Debug.Log(quest.questID);
+        //}
+        Debug.Log(nextQuestID);
     }
 
     private static void SavelatestQuestID()
@@ -45,18 +69,19 @@ public static class QuestManager
         Directory.CreateDirectory(Application.persistentDataPath + "/Data/");
         string location = Application.persistentDataPath + "/Data/GameData.txt";
         File.WriteAllText(location, outputString);
-        Debug.Log(location);
     }
 
     public static Quest GenerateRandomQuest()
     {
+
         Quest quest = new Quest();
         questItemReq itemReqs = new questItemReq(true);
         quest.questGoals.Add(itemReqs);
 
+        quest.questID = nextQuestID;
         quest.questDescription = QuestDescription(itemReqs, quest);
         quest.characterQuestIntroduction = quest.questDescription; //This should be changed 
-        quest.questID = nextQuestID;
+        //Debug.Log(quest.questID);
         NextQuestID -= 1;   //Iterate to make sure that the same quest ID isn't reused
 
         JSONserializer json = new JSONserializer();
@@ -66,6 +91,7 @@ public static class QuestManager
 
     static string QuestDescription(questItemReq questReq, Quest quest) //Test: generates character text based on quest requiements 
     {
+        Debug.Log(quest.questID);
         string description = "Bring me <color=blue>";
         for (int i = 0; i < questReq.items.Count; i++)
         {
