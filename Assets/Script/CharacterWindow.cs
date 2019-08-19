@@ -57,7 +57,7 @@ public class CharacterWindow : MonoBehaviour
         ResetNPCInventoryWindow();
         ResetPlayerInventoryWindow();
         Phrases phrases = new Phrases();
-        text.text = character.quests[0].characterQuestIntroduction; //TEST This should be changed
+        text.text = QuestManager.GetQuest(character.quests[0]).characterQuestIntroduction; //TEST This should be changed
     }
     private void OnDisable()
     {

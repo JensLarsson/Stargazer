@@ -6,15 +6,16 @@ using UnityEngine;
 public class Quest
 {
     public string questName = "Temp Name";
-    public long questID;
+    public int questID;
     public string characterQuestIntroduction;
     public string questDescription;
+    public bool completed;
     public List<QuestGoal> questGoals = new List<QuestGoal>();
 
     public List<ItemSlot> itemReward = new List<ItemSlot>();
     public int monetaryReward = 0;
 
-    public bool QuestCompleted()
+    public bool questRequiermentsCompleted()
     {
         foreach (QuestGoal req in questGoals)
         {
@@ -29,6 +30,11 @@ public class Quest
     public (List<ItemSlot>, int) ClaimReward()
     {
         return (itemReward, monetaryReward);
+    }
+
+    public override int GetHashCode()
+    {
+        return questID;
     }
 }
 

@@ -54,7 +54,7 @@ public class PlanetSystem : MonoBehaviour
             planetObjects.Add(gObject);
         }
 
-
+        QuestManager.RefreshQuestList();
     }
 
     public void CreatePlanet()
@@ -73,5 +73,7 @@ public class PlanetSystem : MonoBehaviour
         JSONserializer json = new JSONserializer();
         json.DeleteFolder(Application.persistentDataPath + "/Planets/Generated");
         json.DeleteFolder(Application.persistentDataPath + "/Locations");
+        json.DeleteFolder(Application.persistentDataPath + "/Quests");
+        json.DeleteFolder(Application.persistentDataPath + "/Data");
     }
 }

@@ -10,7 +10,7 @@ public class Character
     public Vector3 position;
     public float planetOffset;
     public Inventory inventory = new Inventory();
-    public List<Quest> quests = new List<Quest>();
+    public List<int> quests = new List<int>();
     private float playerApproval;
     public float PlayerApproval
     {
