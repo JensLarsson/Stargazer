@@ -58,8 +58,12 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
                 var linkInfo = text.textInfo.linkInfo[linkIndex]; //Takes out the identifier of the link atribute
                 var linkID = linkInfo.GetLinkID().ToString(); //Gets the ID of the identified attribute
 
+
                 Debug.Log(linkID);//Implement action here
                 TextCommandManager.ExecuteCommand(linkID);
+                linkInfo.textComponent = null;
+                text.text = text.text.Remove(linkInfo.linkIdFirstCharacterIndex + linkID.Length+1, linkInfo.linkTextLength);
+                text.ForceMeshUpdate();
             }
         }
     }
