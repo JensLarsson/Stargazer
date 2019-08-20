@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class TextCommandManager
 {
@@ -9,12 +10,12 @@ public static class TextCommandManager
     }
 
 
-    public static void ExecuteCommand(string command)
+    public static bool ExecuteCommand(string command)
     {
         if (command[0] != 47)
         {
             Debug.Log("Not a Command");
-            return;
+            return false;
         }
         string[] commandParts = command.Split(' ');
 
@@ -56,6 +57,23 @@ public static class TextCommandManager
                 //    Debug.LogError("input error: " + command + " " + questInt);
                 //}
                 break;
+
+            case "/LoadScene":
+                Debug.Log("Derp");
+                int sceneID;
+                if (int.TryParse(commandParts[1], out sceneID))
+                {
+                    SceneManager.LoadScene(sceneID);
+                }
+                else
+                {
+                    SceneManager.LoadScene(commandParts[1]);
+                }
+                break;
+
+            default:
+                return false;
         }
+        return true;
     }
 }
