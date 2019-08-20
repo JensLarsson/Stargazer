@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LeoPlanetV3.1.unity
     guid: a7891d75aef65264299d1bdfe515b4a9
+  - enabled: 1
+    path: Assets/LeoAdditions.unity
+    guid: 70d395be27aaf774389c85663c397e72
   m_configObjects: {}
