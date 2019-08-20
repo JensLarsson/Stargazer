@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class CharacterDialogueBase
 {
+    public int activationQuest, deActivationQuest;
+    public bool deactivate;
     public string text;
-    public Quest quest;
-
-    public void getQuest()
-    {
-        //PlayerInfo.quests.Add(quest);
-    }
 }
 
 public class Phrases
