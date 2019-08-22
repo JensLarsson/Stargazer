@@ -108,7 +108,7 @@ public static class QuestManager
             }
             description += questReq.items[i]._amount + "x " + questReq.items[i].GetItemName();
         }
-        description += $"</color>, and I will reward you. \n <link=/Quest {quest.questID}>Accept</link>";
+        description += $"</color>, and I will reward you. \n <link=/GetQuest {quest.questID}>Accept</link>";
         return description;
     }
 }

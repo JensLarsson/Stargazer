@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CharacterDialogueBase
 {
+    public string title;
     public int activationQuest, deActivationQuest;
-    public bool deactivate;
+    public bool deactivated;
     public string text;
 }
 

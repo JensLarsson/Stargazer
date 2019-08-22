@@ -9,7 +9,7 @@ public static class PlayerInfo
     //Inventory är en lista av ItemSlots, vilket innehåller en Item, och antalet av items.
     //Inventory har även logik för att hantera dessa objekt
     public static Inventory inventory = new Inventory();
-    public static List<int> quests = new List<int>();
+    private static List<int> quests = new List<int>();
     private static int currency = 5000;
     public static int Currency
     {
@@ -23,6 +23,26 @@ public static class PlayerInfo
         }
         currency -= cost;
         return true;
+    }
+    public static bool EndQuest(int ID)
+    {
+        if (QuestManager.GetQuest(ID) != null)
+        {
+            GetQuest(ID).completed = true;
+            return true;
+        }
+        return false;
+    }
+
+
+    public static bool StartQuest(int ID)
+    {
+        if (QuestManager.GetQuest(ID) != null)
+        {
+            quests.Add(ID);
+            return true;
+        }
+        return false;
     }
 
     public static Quest GetQuest(int ID)

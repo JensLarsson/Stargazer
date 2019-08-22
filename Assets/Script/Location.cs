@@ -26,7 +26,12 @@ public class Location
                 name = surname + " " + familyname
             };
             character.inventory.GenerateNewInventory(10);
-            character.quests.Add(QuestManager.GenerateRandomQuest().questID);
+            CharacterDialogueBase dialogue = new CharacterDialogueBase()
+            {
+                title = "Generated",
+                text = QuestManager.GenerateRandomQuest().characterQuestIntroduction
+            };
+            character.dialogues.Add(dialogue);
             characters.Add(character);
         }
     }

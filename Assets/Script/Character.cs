@@ -11,6 +11,7 @@ public class Character
     public float planetOffset;
     public Inventory inventory = new Inventory();
     public List<int> quests = new List<int>();
+    public List<CharacterDialogueBase> dialogues = new List<CharacterDialogueBase>();
     private float playerApproval;
     public float PlayerApproval
     {
@@ -22,6 +23,19 @@ public class Character
         {
             playerApproval = Mathf.Clamp(value, 0.0f, 100.0f);
         }
+    }
+
+    public List<CharacterDialogueBase> GetActiveDialogues()
+    {
+        List<CharacterDialogueBase> diags = new List<CharacterDialogueBase>();
+        foreach (CharacterDialogueBase diag in dialogues)
+        {
+            if (!diag.deactivated)
+            {
+                diags.Add(diag);
+            }
+        }
+        return diags;
     }
 
 }

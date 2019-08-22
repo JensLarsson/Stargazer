@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+//SKAPA EN LISTA ÖVER DIALOGER
 public class CharacterWindow : MonoBehaviour
 {
     [SerializeField] Image image;
@@ -39,6 +39,7 @@ public class CharacterWindow : MonoBehaviour
         EventManager.Subscribe("SoldOutItemNegotiation", ItemSoldOutNegotiation);
         EventManager.Subscribe("MouseClickNegotiationItem", ItemSelectedNegotiation);
         EventManager.Subscribe("MouseClickPlayerItem", ItemSelectedPlayer);
+        EventManager.Subscribe("CharacterWindowAddText", AddDialogue);
     }
     public void CharacterSelected(Character character)//resets all the 
     {
@@ -67,6 +68,8 @@ public class CharacterWindow : MonoBehaviour
         EventManager.UnSubscribe("SoldOutItemNegotiation", ItemSoldOutNegotiation);
         EventManager.UnSubscribe("MouseClickNegotiationItem", ItemSelectedNegotiation);
         EventManager.UnSubscribe("MouseClickPlayerItem", ItemSelectedPlayer);
+        EventManager.UnSubscribe("CharacterWindowAddText", AddDialogue);
+
 
         PlayerInfo.inventory.AddItem(offerList._items);
         _character.inventory.AddItem(askList._items);
@@ -274,5 +277,9 @@ public class CharacterWindow : MonoBehaviour
     public void AddDialogue(string txt)
     {
         text.text += "\n \n" + txt;
+    }
+    public void AddDialogue(EventParameter eventParam)
+    {
+        text.text += "\n \n" + eventParam.stringParam;
     }
 }
